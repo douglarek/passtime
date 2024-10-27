@@ -16,7 +16,7 @@ LICENSE="cursor"
 SLOT="0"
 KEYWORDS="-* amd64"
 
-RESTRICT="strip bindist"
+RESTRICT="strip mirror bindist"
 
 RDEPEND="sys-fs/fuse"
 DEPEND="${RDEPEND}"
