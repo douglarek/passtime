@@ -11,7 +11,7 @@ DESCRIPTION="Cursor App - AI-first coding environment"
 HOMEPAGE="https://www.cursor.com/"
 SRC_URI="https://download.todesktop.com/230313mzl4w4u92/cursor-0.42.3-build-241016kxu9umuir-x86_64.AppImage -> ${APPIMAGE}"
 
-LICENSE="Proprietary"
+LICENSE="cursor"
 
 SLOT="0"
 KEYWORDS="-* amd64"
