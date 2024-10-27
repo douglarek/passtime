@@ -3,14 +3,16 @@ passtime - overlay for Gentoo Linux
 
 Write some ebuilds to pass the time with Gentoo Linux.
 
-## List
+```
+(root)$ eselect repository add passtime git https://github.com/douglarek/passtime.git
+```
 
-* app-editors/cursor-bin
+## Packages<a name="packages"></a>
 
-  > Cursor App - AI-first coding environment
+| Package                      | Description                                   | URL                                                                                |
+| :--------------------------- | :-------------------------------------------- | :----------------------------------------------------------------------------------|
+| app-editors/cursor-bin       | Cursor App - AI-first coding environment      | [https://www.cursor.com](https://www.cursor.com)                                   |
+| net-misc/onedrive            | Free Client for OneDrive on Linux[^1]         | [https://github.com/abraunegg/onedrive](https://github.com/abraunegg/onedrive)     |
 
-* net-misc/onedrive
+[^1]: you need to enable dlang overlay by running `eselect repository enable dlang`.
 
-  > Free Client for OneDrive on Linux
-
-  *NOTE* to use it, you need to enable the dlang overlay by running `eselect repository enable dlang`.
