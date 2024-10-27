@@ -32,21 +32,12 @@ src_unpack() {
 	"${S}/${APPIMAGE}" --appimage-extract || die
 }
 
-src_prepare() {
-	# Fix permissions.
-	find "${S}" -type d -exec chmod a+rx {} + || die
-	find "${S}" -type f -exec chmod a+r {} + || die
-
-	default
-}
-
 src_install() {
 	cd "${S}/squashfs-root" || die
 
 	insinto /usr/share
 	doins -r ./usr/share/icons
 
-	local apphome="/opt/${PN}"
 	local toremove=(
 		.DirIcon
 		cursor.desktop
@@ -58,8 +49,13 @@ src_install() {
 	)
 	rm -f -r "${toremove[@]}" || die
 
-	mkdir -p "${ED}/${apphome}" || die
-	cp -r . "${ED}/${apphome}" || die
+	local apphome="/opt/${PN}"
+	insinto "${apphome}"
+	doins -r .
+
+	# Here, press +x as needed.
+	fperms +x "${apphome}/cursor"
+	fperms +x "${apphome}/chrome_crashpad_handler"
 
 	dosym -r "${apphome}/cursor" "/usr/bin/${PN}"
 	make_desktop_entry "${PN} --no-sandbox %U" Cursor cursor "Utility;" \
