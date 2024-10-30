@@ -3,45 +3,25 @@
 
 EAPI=8
 
-inherit flag-o-matic linux-info go-module systemd
-
-_MY_PV=${PV/_rc/rc}
+inherit flag-o-matic linux-info git-r3 go-module systemd
 
 DESCRIPTION="A lightweight and high-performance transparent proxy solution based on eBPF"
 HOMEPAGE="https://github.com/daeuniverse/dae"
-SRC_URI="
-	https://github.com/daeuniverse/dae/releases/download/v${_MY_PV}/dae-full-src.zip -> ${P}.zip
-	https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202410292212/geoip.dat
+SRC_URI="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202410292212/geoip.dat
 	https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202410292212/geosite.dat
 "
 
-S="${WORKDIR}"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64"
 MINKV="5.8"
+
+EGIT_REPO_URI="https://github.com/daeuniverse/dae.git"
 
 BDEPEND="sys-devel/clang app-arch/unzip"
 
 pkg_pretend() {
-	local CONFIG_CHECK="
-		~BPF
-		~BPF_SYSCALL
-		~BPF_JIT
-		~CGROUPS
-		~KPROBES
-		~NET_INGRESS
-		~NET_EGRESS
-		~NET_SCH_INGRESS
-		~NET_CLS_BPF
-		~NET_CLS_ACT
-		~BPF_STREAM_PARSER
-		~DEBUG_INFO
-		~DEBUG_INFO_BTF
-		~KPROBE_EVENTS
-		~BPF_EVENTS
-	"
+	local CONFIG_CHECK="~DEBUG_INFO_BTF ~NET_CLS_ACT ~NET_SCH_INGRESS ~NET_INGRESS ~NET_EGRESS"
 
 	if kernel_is -lt ${MINKV//./ }; then
 		ewarn "Kernel version at least ${MINKV} required"
@@ -50,24 +30,27 @@ pkg_pretend() {
 	check_extra_config
 }
 
+src_unpack() {
+	git-r3_src_unpack
+	cd "${P}" || die
+	ego mod download -modcacherw
+}
+
 src_prepare() {
 	# Prevent conflicting with the user's flags
-	sed -i -e 's/-O2//' "${S}/Makefile" || die 'Failed to remove -O2 via sed'
+	# https://devmanual.gentoo.org/ebuild-writing/common-mistakes/#-werror-compiler-flag-not-removed
 	sed -i -e 's/-Werror//' "${S}/Makefile" || die 'Failed to remove -Werror via sed'
 
 	default
 }
 
 src_compile() {
-	#-flto makes llvm-strip complains
-	#llvm-strip: error: '*/control/bpf_bpfel.o': The file was not recognized as a valid object file
-	filter-lto
 	# for dae's ebpf target
 	# gentoo-zh#3720
 	filter-flags "-march=*" "-mtune=*"
 	append-cflags "-fno-stack-protector"
 
-	emake VERSION="${PV}" GOFLAGS="-buildvcs=false -w"
+	emake VERSION="${PV}" GOFLAGS="-buildvcs=false"
 }
 
 src_install() {
