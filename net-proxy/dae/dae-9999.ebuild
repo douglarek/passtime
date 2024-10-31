@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/20241
 
 LICENSE="AGPL-3"
 SLOT="0"
-MINKV="5.8"
+MINKV="5.17"
 
 EGIT_REPO_URI="https://github.com/daeuniverse/dae.git"
 
