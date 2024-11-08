@@ -47,5 +47,6 @@ src_install() {
 	dodir /usr/bin
 	dosym -r /opt/spotube/spotube /usr/bin/spotube
 
-	patchelf --replace-needed "libappindicator3.so.1" "libayatana-appindicator3.so.1" "${ED}/opt/spotube/lib/libtray_manager_plugin.so" || die
+	patchelf --replace-needed "libappindicator3.so.1" "libayatana-appindicator3.so.1" \
+		"${ED}/opt/spotube/lib/libtray_manager_plugin.so" || die
 }
