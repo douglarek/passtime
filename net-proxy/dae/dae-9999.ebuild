@@ -11,7 +11,6 @@ SRC_URI="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/20241
 	https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202410292212/geosite.dat
 "
 
-
 LICENSE="AGPL-3"
 SLOT="0"
 MINKV="5.17"
