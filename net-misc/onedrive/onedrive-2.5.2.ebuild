@@ -5,6 +5,7 @@ EAPI=8
 
 DESCRIPTION="Free Client for OneDrive on Linux"
 HOMEPAGE="https://abraunegg.github.io/"
+SRC_URI="https://codeload.github.com/abraunegg/onedrive/tar.gz/v${PV} -> ${P}.tar.gz"
 LICENSE="GPL-3"
 
 SLOT="0"
@@ -19,10 +20,9 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
-SRC_URI="https://codeload.github.com/abraunegg/onedrive/tar.gz/v${PV} -> ${P}.tar.gz"
 DLANG_VERSION_RANGE="2.087-2.106"
 DLANG_PACKAGE_TYPE="single"
-IUSE="debug libnotify"
+IUSE="debug +libnotify"
 
 inherit systemd bash-completion-r1
 
