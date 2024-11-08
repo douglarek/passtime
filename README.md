@@ -11,7 +11,7 @@ Write some ebuilds to pass the time with Gentoo Linux.
 
 | Package                      | Description                                                   | URL                                                                                   |
 | :--------------------------- | :------------------------------------------------------------ | :-------------------------------------------------------------------------------------|
-| app-editors/cursor-bin       | Cursor App - AI-first coding environment                      | [https://www.cursor.com](https://www.cursor.com)                                      |
+| app-editors/cursor           | Cursor App - AI-first coding environment                      | [https://www.cursor.com](https://www.cursor.com)                                      |
 | net-misc/onedrive[^1]        | Free Client for OneDrive on Linux[^2]                         | [https://github.com/abraunegg/onedrive](https://github.com/abraunegg/onedrive)        |
 | net-proxy/dae[^3]            | eBPF-based Linux high-performance transparent proxy solution  | [https://github.com/daeuniverse/dae](https://github.com/daeuniverse/dae)              |
 | net-vpn/cloudflared-bin      | Cloudflare Tunnel client (formerly Argo Tunnel)               | [https://github.com/cloudflare/cloudflared](https://github.com/cloudflare/cloudflared)|
