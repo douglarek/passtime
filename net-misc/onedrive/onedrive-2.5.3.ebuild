@@ -56,4 +56,14 @@ pkg_postinst() {
 	elog "OneDrive Free Client needs to be authorized to access your data before the"
 	elog "first use. To do so, run onedrive in a terminal for the user in question and"
 	elog "follow the steps on screen."
+
+	local old_ver minor_part="$(ver_cut 1-2)"
+	for old_ver in ${REPLACING_VERSIONS}; do
+		if ver_test "${old_ver}" -lt "${minor_part}"; then
+			ewarn "You are performing an upgrade that is not backwards-compatible"
+			ewarn "and you need to upgrade to ${PN}-${minor_part} on all your devices."
+			ewarn "Please read: https://github.com/abraunegg/onedrive/releases/tag/v${PV}"
+			break
+		fi
+	done
 }
