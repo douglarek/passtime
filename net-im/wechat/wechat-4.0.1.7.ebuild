@@ -7,7 +7,9 @@ inherit unpacker desktop xdg
 
 DESCRIPTION="Weixin for Linux"
 HOMEPAGE="https://linux.weixin.qq.com"
-SRC_URI="https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb -> WeChatLinux-${PV}_x86_64.deb"
+SRC_URI="
+	amd64? ( https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb -> wechat-${PV}_x86_64.deb )
+"
 S=${WORKDIR}
 
 LICENSE="all-rights-reserved"
