@@ -1,10 +1,10 @@
-# Copyright 2024 Gentoo Authors
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-DESCRIPTION="Small unix terminal file explorer"
-HOMEPAGE="https://github.com/BrookJeynes/zfe"
+DESCRIPTION="A lightweight Unix TUI file explorer"
+HOMEPAGE="https://github.com/BrookJeynes/jido"
 
 declare -g -r -A ZBS_DEPENDENCIES=(
     [vaxis-1220d587525255e734670ae74f38cb09d75df936c7889b07a6eab739c066dc736f85.tar.gz]='https://github.com/rockorager/libvaxis/archive/77f5795892b08cd64ad6a103f0c53a7d1db50b18.tar.gz'
@@ -18,7 +18,7 @@ ZIG_SLOT="0.13"
 inherit zig
 
 SRC_URI="
-	https://github.com/BrookJeynes/zfe/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/BrookJeynes/jido/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 	${ZBS_DEPENDENCIES_SRC_URI}
 "
 
