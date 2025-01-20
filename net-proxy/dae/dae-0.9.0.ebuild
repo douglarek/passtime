@@ -6,23 +6,24 @@ EAPI=8
 inherit flag-o-matic linux-info go-module systemd
 
 _MY_PV=${PV/_rc/rc}
+GEO_V="202501192212"
 
 DESCRIPTION="A lightweight and high-performance transparent proxy solution based on eBPF"
 HOMEPAGE="https://github.com/daeuniverse/dae"
 SRC_URI="
 	https://github.com/daeuniverse/dae/releases/download/v${_MY_PV}/dae-full-src.zip -> ${P}.zip
-	https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202410292212/geoip.dat
-	https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202410292212/geosite.dat
+	https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${GEO_V}/geoip.dat -> geoip-${GEO_V}.dat
+	https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${GEO_V}/geosite.dat -> geosite-${GEO_V}.dat
 "
 
 S="${WORKDIR}"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64"
-MINKV="5.8"
+KEYWORDS="~amd64"
+MINKV="5.17"
 
-BDEPEND="sys-devel/clang app-arch/unzip"
+BDEPEND="llvm-core/clang"
 
 pkg_pretend() {
 	local CONFIG_CHECK="
@@ -50,6 +51,13 @@ pkg_pretend() {
 	check_extra_config
 }
 
+src_unpack() {
+	cp "${DISTDIR}/geoip-${GEO_V}.dat" "${S}/geoip.dat" || die
+	cp "${DISTDIR}/geosite-${GEO_V}.dat" "${S}/geosite.dat" || die
+
+	default
+}
+
 src_prepare() {
 	# Prevent conflicting with the user's flags
 	sed -i -e 's/-O2//' "${S}/Makefile" || die 'Failed to remove -O2 via sed'
@@ -67,7 +75,7 @@ src_compile() {
 	filter-flags "-march=*" "-mtune=*"
 	append-cflags "-fno-stack-protector"
 
-	emake VERSION="${PV}" GOFLAGS="-buildvcs=false -w"
+	BUILD_ARGS="-buildmode=pie -modcacherw" GOARCH="${ARCH}" GOFLAGS="-buildvcs=false -w" VERSION="${PV}" emake
 }
 
 src_install() {
@@ -75,11 +83,8 @@ src_install() {
 
 	systemd_dounit install/dae.service
 
-	insinto /etc/dae
-	newins example.dae config.dae.example
-	newins install/empty.dae config.dae
-
+	keepdir /etc/dae/
 	insinto /usr/share/dae
-	doins "${DISTDIR}/geoip.dat"
-	doins "${DISTDIR}/geosite.dat"
+	newins example.dae config.dae.example
+	doins geoip.dat geosite.dat
 }
