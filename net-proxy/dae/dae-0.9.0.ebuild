@@ -75,7 +75,7 @@ src_compile() {
 	filter-flags "-march=*" "-mtune=*"
 	append-cflags "-fno-stack-protector"
 
-	BUILD_ARGS="-buildmode=pie -modcacherw" GOARCH="${ARCH}" GOFLAGS="-buildvcs=false -w" VERSION="${PV}" emake
+	BUILD_ARGS="-buildmode=pie -modcacherw" emake GOARCH="${ARCH}" GOFLAGS="-buildvcs=false -w" VERSION="${PV}"
 }
 
 src_install() {
