@@ -19,7 +19,6 @@ S="${WORKDIR}"
 LICENSE="cursor"
 
 SLOT="0"
-KEYWORDS="-* amd64"
 IUSE="egl kerberos wayland"
 RESTRICT="bindist mirror strip"
 
