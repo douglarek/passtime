@@ -16,7 +16,7 @@ SRC_URI+="
 	)
 	doc? (
 		https://raw.githubusercontent.com/cloudflare/cloudflared/refs/tags/${PV}/RELEASE_NOTES
-			-> RELEASE_NOTES-${PV}
+			-> cloudflared-${PV}-RELEASE_NOTES
 	)"
 S=${WORKDIR}
 
@@ -42,7 +42,7 @@ src_prepare() {
 	                ;;
 	esac
 
-	use doc && (cp "${DISTDIR}/RELEASE_NOTES-${PV}" release_notes || die)
+	use doc && (cp "${DISTDIR}/cloudflared-${PV}-RELEASE_NOTES" release_notes || die)
 }
 
 src_install() {
