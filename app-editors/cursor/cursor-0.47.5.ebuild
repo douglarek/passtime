@@ -11,7 +11,7 @@ CHROMIUM_LANGS="
 
 inherit chromium-2 desktop pax-utils unpacker xdg optfeature shell-completion
 
-BUILD_ID="8f8a2000673d2c48f6cac5eea2f3f9f2ed5e4ec2"
+BUILD_ID="53d6da1322f934a1058e7569ee0847b24879d18c"
 DESCRIPTION="Cursor App - AI-first coding environment"
 HOMEPAGE="https://www.cursor.com/"
 SRC_URI="
