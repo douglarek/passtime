@@ -18,7 +18,6 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | media-sound/spotube-bin[^4]  | An open source, cross-platform Spotify client                 | [https://spotube.krtirtho.dev](https://spotube.krtirtho.dev)                                                        |
 | net-im/wechat[^5]            | Weixin for Linux                                              | [https://linux.weixin.qq.com](https://linux.weixin.qq.com)                                                          |
 | app-text/goldendict-ng[^6]   | The Next Generation GoldenDict                                | [https://github.com/xiaoyifang/goldendict-ng](https://github.com/xiaoyifang/goldendict-ng)                          |
-| app-shells/zfe               | A small unix terminal file explorer                           | [https://github.com/BrookJeynes/zfe](https://github.com/BrookJeynes/zfe)                                            |
 
 [^1]: forked from https://github.com/gentoo/dlang with regular updates.
 [^2]: you need to enable dlang overlay by running `eselect repository enable dlang`.
