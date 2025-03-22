@@ -1,7 +1,6 @@
 name: nvchecker
 
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: '*/20 * * * *'
