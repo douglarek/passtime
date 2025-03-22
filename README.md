@@ -4,6 +4,7 @@ passtime - overlay for Gentoo Linux
 Write some ebuilds to pass the time with Gentoo Linux.
 
 ```
+(root)$ eselect repository enable dlang
 (root)$ eselect repository add passtime git https://github.com/douglarek/passtime.git
 ```
 

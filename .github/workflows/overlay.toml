@@ -1,0 +1,43 @@
+[__config__]
+oldver = "old_ver.json"
+newver = "new_ver.json"
+
+["app-editors/cursor"]
+source = "regex"
+url = "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
+regex = '"version":"([\d.]+)"'
+
+["net-misc/onedrive"]
+source = "github"
+github = "abraunegg/onedrive"
+use_latest_release = true
+prefix = "v"
+
+["net-proxy/dae"]
+source = "github"
+github = "daeuniverse/dae"
+use_latest_release = true
+prefix = "v"
+
+["net-vpn/cloudflared-bin"]
+source = "github"
+github = "cloudflare/cloudflared"
+use_latest_release = true
+
+["media-sound/spotube-bin"]
+source = "github"
+github = "KRTirtho/spotube"
+use_latest_release = true
+prefix = "v"
+
+["net-im/wechat"]
+source = "regex"
+url = "https://github.com/peeweep/wechat-linux-watcher/raw/refs/heads/master/wechat-linux-version.txt"
+regex = '(.*)'
+
+["app-text/goldendict"]
+source = "github"
+github = "xiaoyifang/goldendict-ng"
+use_latest_release = true
+from_pattern = "v(.*)-.*"
+to_pattern = "\\1"
