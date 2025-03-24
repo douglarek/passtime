@@ -41,7 +41,7 @@ url = "https://github.com/peeweep/wechat-linux-watcher/raw/refs/heads/master/wec
 regex = '(.*)'
 github_account = ["douglarek"]
 
-["app-text/goldendict"]
+["app-text/goldendict-ng"]
 source = "github"
 github = "xiaoyifang/goldendict-ng"
 use_latest_release = true
