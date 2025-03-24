@@ -19,6 +19,7 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | media-sound/spotube-bin[^4]  | An open source, cross-platform Spotify client                 | [https://spotube.krtirtho.dev](https://spotube.krtirtho.dev)                                                        |
 | net-im/wechat[^5]            | Weixin for Linux                                              | [https://linux.weixin.qq.com](https://linux.weixin.qq.com)                                                          |
 | app-text/goldendict-ng[^6]   | The Next Generation GoldenDict                                | [https://github.com/xiaoyifang/goldendict-ng](https://github.com/xiaoyifang/goldendict-ng)                          |
+| dev-util/osc[^7]             | The Command Line Interface to work with an Open Build Service | [https://github.com/openSUSE/osc](https://github.com/openSUSE/osc)                                                  |
 
 [^1]: forked from https://github.com/gentoo/dlang with regular updates.
 [^2]: you need to enable dlang overlay by running `eselect repository enable dlang`.
@@ -26,4 +27,5 @@ Write some ebuilds to pass the time with Gentoo Linux.
 [^4]: borrowed from https://github.com/gentoo/guru.
 [^5]: native qt non-bubblewrap.
 [^6]: borrowed from https://gitlab.com/Perfect_Gentleman/PG_Overlay.
+[^7]: borrowed from https://github.com/Gig-OS/gig.
 
