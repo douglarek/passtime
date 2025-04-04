@@ -9,7 +9,7 @@ sv_SE tg_TJ tk_TM tr_TR uk_UA vi_VN zh_CN zh_TW"
 
 inherit cmake flag-o-matic plocale xdg
 
-MY_PV="25.02.0-Release.e895b18c"
+MY_PV="25.05.0-Release.2a2b0e16"
 
 DESCRIPTION="Feature-rich dictionary lookup program (qtwebengine fork)"
 HOMEPAGE="https://xiaoyifang.github.io/goldendict-ng/"
