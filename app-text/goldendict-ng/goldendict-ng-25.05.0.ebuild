@@ -16,8 +16,8 @@ HOMEPAGE="https://xiaoyifang.github.io/goldendict-ng/"
 SRC_URI="
 	https://github.com/xiaoyifang/goldendict-ng/archive/v${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz
 "
-
 S="${WORKDIR}/goldendict-ng-${MY_PV}"
+
 LICENSE="
 	GPL-3
 	!systemfmt? ( MIT )
@@ -25,7 +25,7 @@ LICENSE="
 "
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ffmpeg +epwing systemfmt systemtoml tts zim"
+IUSE="ffmpeg epwing systemfmt systemtoml tts zim"
 
 DEPEND="
 	app-arch/bzip2
@@ -44,7 +44,6 @@ DEPEND="
 	dev-qt/qtwebengine:6[widgets]
 	epwing? ( dev-libs/eb )
 	ffmpeg? (
-		media-libs/libao
 		media-video/ffmpeg:*
 	)
 	!ffmpeg? ( dev-qt/qtmultimedia:6[gstreamer] )
