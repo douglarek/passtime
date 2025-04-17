@@ -13,10 +13,13 @@ S="${WORKDIR}/platform-tools"
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="-* ~amd64"
+IUSE="udev"
 RESTRICT="bindist strip"
 
 DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	udev? ( dev-util/android-udev-rules )
+"
 
 src_install() {
 	exeinto /opt/${PN}
