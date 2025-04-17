@@ -6,40 +6,34 @@ newver = "new_ver.json"
 source = "regex"
 url = "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
 regex = '"version":"([\d.]+)"'
-github_account = ["douglarek"]
 
 ["net-misc/onedrive"]
 source = "github"
 github = "abraunegg/onedrive"
 use_latest_release = true
 prefix = "v"
-github_account = ["douglarek"]
 
 ["net-proxy/dae"]
 source = "github"
 github = "daeuniverse/dae"
 use_latest_release = true
 prefix = "v"
-github_account = ["douglarek"]
 
 ["net-vpn/cloudflared-bin"]
 source = "github"
 github = "cloudflare/cloudflared"
 use_latest_release = true
-github_account = ["douglarek"]
 
 ["media-sound/spotube-bin"]
 source = "github"
 github = "KRTirtho/spotube"
 use_latest_release = true
 prefix = "v"
-github_account = ["douglarek"]
 
 ["net-im/wechat"]
 source = "regex"
 url = "https://github.com/peeweep/wechat-linux-watcher/raw/refs/heads/master/wechat-linux-version.txt"
 regex = '(.*)'
-github_account = ["douglarek"]
 
 ["app-text/goldendict-ng"]
 source = "github"
@@ -47,10 +41,13 @@ github = "xiaoyifang/goldendict-ng"
 use_latest_release = true
 from_pattern = "v(.*)-.*"
 to_pattern = "\\1"
-github_account = ["douglarek"]
 
 ["dev-util/osc"]
 source = "github"
 github = "openSUSE/osc"
 use_latest_tag = true
-github_account = ["douglarek"]
+
+["dev-util/android-tools-bin"]
+source = "github"
+github = "nmeum/android-tools"
+use_latest_tag = true
