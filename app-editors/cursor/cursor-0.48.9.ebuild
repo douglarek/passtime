@@ -3,11 +3,10 @@
 
 EAPI=8
 
-CHROMIUM_LANGS="
-	af am ar bg bn ca cs da de el en-GB en-US es-419 es et fa fil fi fr gu he hi
-	hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr sv sw
-	ta te th tr uk ur vi zh-CN zh-TW
-"
+CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
+	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
+	sv sw ta te th tr uk ur vi zh-CN zh-TW"
+
 
 inherit chromium-2 desktop pax-utils unpacker xdg optfeature shell-completion
 
