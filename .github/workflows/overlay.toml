@@ -51,3 +51,9 @@ use_latest_tag = true
 source = "github"
 github = "nmeum/android-tools"
 use_latest_tag = true
+
+["sci-ml/ollama"]
+source = "github"
+github = "ollama/ollama"
+use_latest_tag = true
+prefix = "v"
