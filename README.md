@@ -30,5 +30,5 @@ Write some ebuilds to pass the time with Gentoo Linux.
 [^5]: native qt non-bubblewrap.
 [^6]: borrowed from https://gitlab.com/Perfect_Gentleman/PG_Overlay.
 [^7]: borrowed from https://github.com/Gig-OS/gig.
-[^7]: borrowed from https://github.com/gentoo/guru.
+[^8]: borrowed from https://github.com/gentoo/guru.
 
