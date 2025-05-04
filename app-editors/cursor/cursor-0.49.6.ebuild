@@ -7,14 +7,15 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk ur vi zh-CN zh-TW"
 
-
 inherit chromium-2 desktop pax-utils unpacker xdg optfeature shell-completion
 
 BUILD_ID="0781e811de386a0c5bcb07ceb259df8ff8246a52"
 DESCRIPTION="Cursor App - AI-first coding environment"
 HOMEPAGE="https://www.cursor.com/"
 SRC_URI="
-	amd64? ( https://downloads.cursor.com/production/${BUILD_ID}/linux/x64/Cursor-${PV}-x86_64.AppImage -> ${P}-amd64.AppImage )
+	amd64? (
+		https://downloads.cursor.com/production/${BUILD_ID}/linux/x64/Cursor-${PV}-x86_64.AppImage -> ${P}-amd64.AppImage
+	)
 "
 S="${WORKDIR}"
 
