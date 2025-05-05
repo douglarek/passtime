@@ -24,12 +24,6 @@ source = "github"
 github = "cloudflare/cloudflared"
 use_latest_release = true
 
-["media-sound/spotube-bin"]
-source = "github"
-github = "KRTirtho/spotube"
-use_latest_release = true
-prefix = "v"
-
 ["net-im/wechat"]
 source = "regex"
 url = "https://github.com/peeweep/wechat-linux-watcher/raw/refs/heads/master/wechat-linux-version.txt"
