@@ -56,3 +56,9 @@ prefix = "v"
 source = "github"
 github = "dominikh/go-tools"
 use_latest_tag = true
+
+["dev-go/gotests"]
+source = "github"
+github = "cweill/gotests"
+use_latest_tag = true
+prefix = "v"
