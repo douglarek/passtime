@@ -51,3 +51,8 @@ source = "github"
 github = "ollama/ollama"
 use_latest_tag = true
 prefix = "v"
+
+["dev-go/staticcheck"]
+source = "github"
+github = "dominikh/go-tools"
+use_latest_tag = true
