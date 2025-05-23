@@ -7,8 +7,8 @@ inherit go-module
 
 DESCRIPTION="Go static analysis, detecting bugs, performance issues, and much more"
 HOMEPAGE="https://staticcheck.dev https://github.com/dominikh/go-tools"
-SRC_URI="https://github.com/dominikh/go-tools/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-SRC_URI+=" https://github.com/douglarek/gentoo-deps/releases/download/${P}/${P}-deps.tar.xz"
+SRC_URI="https://github.com/dominikh/go-tools/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/douglarek/gentoo-deps/releases/download/${P}/${P}-vendor.tar.xz -> ${P}-deps.tar.xz"
 S="${WORKDIR}/go-tools-${PV}"
 
 LICENSE="BSD MIT"
@@ -18,8 +18,12 @@ KEYWORDS="-* ~amd64 ~arm64"
 DEPEND="dev-lang/go"
 RDEPEND="${DEPEND}"
 
+src_configure() {
+	mkdir bin || die
+}
+
 src_compile() {
-	ego build -o "${PN}" "./cmd/${PN}"
+	ego build -o "bin/${PN}" "./cmd/${PN}"
 }
 
 src_test() {
@@ -27,5 +31,5 @@ src_test() {
 }
 
 src_install() {
-	dobin "${PN}"
+	dobin "bin/${PN}"
 }
