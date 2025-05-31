@@ -8,8 +8,8 @@ inherit linux-info
 DESCRIPTION="eBPF-based Linux kernel networking debugger"
 HOMEPAGE="https://github.com/cilium/pwru"
 SRC_URI="
-	amd64? ( https://github.com/cilium/pwru/releases/download/v${PV}/${PN}-linux-amd64.tar.gz -> ${P}-amd64.tar.gz )
-	arm64? ( https://github.com/cilium/pwru/releases/download/v${PV}/${PN}-linux-arm64.tar.gz -> ${P}-arm64.tar.gz )
+	amd64? ( https://github.com/cilium/pwru/releases/download/v${PV}/pwru-linux-amd64.tar.gz -> ${P}-amd64.tar.gz )
+	arm64? ( https://github.com/cilium/pwru/releases/download/v${PV}/pwru-linux-arm64.tar.gz -> ${P}-arm64.tar.gz )
 "
 S="${WORKDIR}"
 
@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64"
 MINKV="5.18"
 RESTRICT="strip"
+
+RDEPEND="!net-analyzer/pwru"
 
 pkg_pretend() {
 	local CONFIG_CHECK="
@@ -38,5 +40,5 @@ pkg_pretend() {
 }
 
 src_install() {
-	dobin "${PN}"
+	dobin pwru
 }
