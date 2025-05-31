@@ -7,6 +7,12 @@ source = "regex"
 url = "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
 regex = '"version":"([\d.]+)"'
 
+["net-analyzer/pwru"]
+source = "github"
+github = "cilium/pwru"
+use_latest_release = true
+prefix = "v"
+
 ["net-misc/onedrive"]
 source = "github"
 github = "abraunegg/onedrive"
