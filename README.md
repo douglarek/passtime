@@ -24,6 +24,7 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | sci-ml/ollama[^8]            | Get up and running with Llama 3, Mistral, Gemma, and other language models| [https://github.com/ollama/ollama](https://github.com/ollama/ollama)                                                          |
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more     | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code          | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
+| app-vim/hlyank               | Highlight yanked text in Vim                                              | [https://github.com/markonm/hlyank.vim](https://github.com/markonm/hlyank.vim)                                                        |
 
 [^1]: forked from https://github.com/gentoo/dlang with regular updates.
 [^2]: you need to enable dlang overlay by running `eselect repository enable dlang`.
