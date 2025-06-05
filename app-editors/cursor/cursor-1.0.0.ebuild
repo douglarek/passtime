@@ -9,12 +9,15 @@ CHROMIUM_LANGS="af am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu
 
 inherit chromium-2 desktop pax-utils unpacker xdg optfeature shell-completion
 
-BUILD_ID="f364e608fc11d38303429b80fd1e1f32d7587d43"
+BUILD_ID="53b99ce608cba35127ae3a050c1738a959750865"
 DESCRIPTION="Cursor App - AI-first coding environment"
 HOMEPAGE="https://www.cursor.com/"
 SRC_URI="
 	amd64? (
 		https://downloads.cursor.com/production/${BUILD_ID}/linux/x64/Cursor-${PV}-x86_64.AppImage -> ${P}-amd64.AppImage
+	)
+	arm64? (
+		https://downloads.cursor.com/production/${BUILD_ID}/linux/arm64/Cursor-${PV}-aarch64.AppImage -> ${P}-arm64.AppImage
 	)
 "
 S="${WORKDIR}"
@@ -22,7 +25,7 @@ S="${WORKDIR}"
 LICENSE="cursor"
 
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~arm64"
 IUSE="egl kerberos wayland"
 RESTRICT="bindist mirror strip"
 
@@ -102,7 +105,7 @@ src_install() {
 
 	local EXEC_EXTRA_FLAGS=()
 	if use wayland; then
-		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" "--enable-wayland-ime" )
+		EXEC_EXTRA_FLAGS+=( "--ozone-platform-hint=auto" "--enable-wayland-ime" "--wayland-text-input-version=3" )
 	fi
 	if use egl; then
 		EXEC_EXTRA_FLAGS+=( "--use-gl=egl" )
