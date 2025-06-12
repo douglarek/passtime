@@ -68,3 +68,9 @@ source = "github"
 github = "cweill/gotests"
 use_latest_tag = true
 prefix = "v"
+
+["app-misc/opencode"]
+source = "github"
+github = "sst/opencode"
+use_latest_tag = true
+prefix = "v"

@@ -25,6 +25,7 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more     | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code          | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
 | app-vim/hlyank               | Highlight yanked text in Vim                                              | [https://github.com/markonm/hlyank.vim](https://github.com/markonm/hlyank.vim)                                                        |
+| app-misc/opencode            | AI coding agent, built for the terminal                                   | [https://github.com/sst/opencode](https://github.com/sst/opencode)                                                        |
 
 [^1]: forked from https://github.com/gentoo/dlang with regular updates.
 [^2]: you need to enable dlang overlay by running `eselect repository enable dlang`.
