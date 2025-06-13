@@ -74,3 +74,9 @@ source = "github"
 github = "sst/opencode"
 use_latest_tag = true
 prefix = "v"
+
+["net-libs/nodejs-bin"]
+source = "github"
+github = "nodejs/node"
+use_latest_tag = true
+prefix = "v"
