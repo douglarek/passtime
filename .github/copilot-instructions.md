@@ -89,6 +89,13 @@ When upgrading packages, follow this structured version bump process:
 6. Commit with a descriptive message using `pkgdev commit --signoff`
 7. Perform final QA checks with `pkgcheck scan --commits --net`
 
-Special handling for specific packages:
+## Version Detection Best Practices
+### General GitHub Projects
+For GitHub-hosted projects, use the GitHub API to fetch the latest version:
+- Endpoint: `https://api.github.com/repos/<owner>/<repo>/releases/latest`
+- Extract the `tag_name` field to get the latest version
+- This is the recommended approach for most GitHub projects
+
+### Special handling for specific packages:
 * Cursor: Update BUILD_ID by querying the API endpoint `https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest`
 * GoldenDict-NG: Update MY_PV by fetching the latest release from `https://api.github.com/repos/xiaoyifang/goldendict-ng/releases/latest` and extracting the `tag_name` field
