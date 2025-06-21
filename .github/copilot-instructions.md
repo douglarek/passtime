@@ -92,7 +92,7 @@ When upgrading packages, follow this structured version bump process:
    git commit --amend -m "package/name: add X.Y.Z
 
    Signed-off-by: Your Name <your.email@domain.com>
-   Co-authored-by: GitHub Copilot <noreply@github.com>"
+   Co-authored-by: GitHub Copilot <copilot@github.com>"
    ```
 10. **Push Changes**: Use `pkgdev push` to push to remote repository
 11. **Clean Up**: Remove old versions and regenerate Manifest if needed
@@ -127,7 +127,7 @@ For GitHub-hosted projects, use the GitHub API to fetch the latest version:
    [Optional detailed description]
    
    Signed-off-by: Your Name <email@example.com>
-   Co-authored-by: GitHub Copilot <noreply@github.com>
+   Co-authored-by: GitHub Copilot <copilot@github.com>
    ```
 
 ### Common Commit Types
