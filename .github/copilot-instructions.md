@@ -91,6 +91,8 @@ When upgrading packages, follow this structured version bump process:
    ```bash
    git commit --amend -m "package/name: add X.Y.Z
 
+   🤖 Generated with [GitHub Copilot](https://github.com/features/copilot)
+
    Signed-off-by: Your Name <your.email@domain.com>
    Co-authored-by: GitHub Copilot <copilot@github.com>"
    ```
@@ -125,7 +127,9 @@ For GitHub-hosted projects, use the GitHub API to fetch the latest version:
    package/name: action description
    
    [Optional detailed description]
-   
+
+   🤖 Generated with [GitHub Copilot](https://github.com/features/copilot)
+
    Signed-off-by: Your Name <email@example.com>
    Co-authored-by: GitHub Copilot <copilot@github.com>
    ```
