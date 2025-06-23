@@ -7,13 +7,12 @@ DESCRIPTION="AI coding agent, built for the terminal"
 HOMEPAGE="https://github.com/sst/opencode https://opencode.ai"
 SRC_URI="
 	amd64? ( https://github.com/sst/opencode/releases/download/v${PV}/opencode-linux-x64.zip -> ${P}-amd64.zip )
-	arm64? ( https://github.com/sst/opencode/releases/download/v${PV}/opencode-linux-arm64.zip -> ${P}-arm64.zip )
 "
 S="${WORKDIR}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm64"
+KEYWORDS="-* ~amd64"
 
 BDEPEND="app-arch/unzip"
 
