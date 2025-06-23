@@ -80,14 +80,15 @@ This is a Gentoo overlay repository called "passtime" containing custom ebuilds 
 When upgrading packages, follow this structured version bump process:
 
 1. **Version Detection**: Check for the latest upstream version using GitHub API or package-specific endpoints
-2. **Copy Ebuild**: Copy the existing latest ebuild to a new version file
+2. **Copy Ebuild**: Copy the existing latest ebuild to a new version file and decide whether to remove old versions
 3. **Update Variables**: Update version number and any version-specific variables
 4. **Dependencies Check**: Verify for new dependencies or upstream changes
-5. **Generate Manifest**: Run `ebuild <package>.ebuild manifest` to generate checksums
-6. **Test Ebuild**: Run `ebuild <package>.ebuild test` to verify functionality
-7. **Stage Changes**: Use `git add <file>` to stage your changes
-8. **Commit Changes**: Use `pkgdev commit --signoff` (without -m) to auto-generate commit message
-9. **Add Co-author**: Use `git commit --amend` to add GitHub Copilot as co-author:
+5. **Create Git Branch**: Run `git checkout -b package-name-X.Y.Z` to create a new branch based on the master branch for the version bump
+6. **Generate Manifest**: Run `ebuild <package>.ebuild manifest` to generate checksums
+7. **Test Ebuild**: Run `ebuild <package>.ebuild test` to verify functionality
+8. **Stage Changes**: Use `git add <file>` to stage your changes
+9. **Commit Changes**: Use `pkgdev commit --signoff` (without -m) to auto-generate commit message
+10. **Add Co-author**: Use `git commit --amend` to add GitHub Copilot as co-author:
    ```bash
    git commit --amend -m "package/name: add X.Y.Z
 
@@ -96,9 +97,9 @@ When upgrading packages, follow this structured version bump process:
    Signed-off-by: Your Name <your.email@domain.com>
    Co-authored-by: GitHub Copilot <copilot@github.com>"
    ```
-10. **Push Changes**: Use `pkgdev push` to push to remote repository
-11. **Clean Up**: Remove old versions and regenerate Manifest if needed
-12. **Final QA**: `pkgdev push` automatically performs QA checks during push
+11. **Push Changes**: Use `pkgdev push` to push to remote repository
+12. **Clean Up**: Remove old versions and regenerate Manifest if needed
+13. **Final QA**: `pkgdev push` automatically performs QA checks during push
 
 ## Version Detection Best Practices
 ### General GitHub Projects
