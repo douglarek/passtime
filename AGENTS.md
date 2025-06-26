@@ -32,6 +32,8 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - Regenerate the manifest using: `ebuild <package>.ebuild manifest --force`
 - Test the ebuild installation with: `ebuild <package>.ebuild configure`
 - Run QA checks using: `pkgcheck scan --verbose <package>.ebuild`
+- Remove the old ebuild file.
+- Regenerate the manifest again to remove the old entry: `ebuild <package>.ebuild manifest --force`
 - Prompt the user to stage the changes and commit them using `pkgdev commit --signoff`, which will auto-generate a commit message.
 - Ask the user if they want to push the changes to a remote branch or open a pull request (e.g., `git push origin <current-branch>:<package-branch>`).
 
