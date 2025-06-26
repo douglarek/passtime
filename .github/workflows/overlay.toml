@@ -75,6 +75,12 @@ github = "sst/opencode"
 use_latest_tag = true
 prefix = "v"
 
+["net-libs/bun-bin"]
+source = "github"
+github = "oven-sh/bun"
+use_latest_tag = true
+prefix = "bun-v"
+
 ["net-libs/nodejs-bin"]
 source = "github"
 github = "nodejs/node"
