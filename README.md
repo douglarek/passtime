@@ -26,7 +26,6 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code          | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
 | app-misc/opencode-bin        | AI coding agent, built for the terminal                                   | [https://github.com/sst/opencode](https://github.com/sst/opencode)                                                            |
 | net-libs/bun-bin             | Incredibly fast JavaScript runtime, bundler, test runner, and package manager | [https://github.com/oven-sh/bun](https://github.com/oven-sh/bun)                                                              |
-| net-libs/nodejs-bin[^9]      | A JavaScript runtime built on Chrome's V8 JavaScript engine               | [https://nodejs.org/en/download](https://nodejs.org/en/download)                                                              |
 
 [^1]: forked from https://github.com/gentoo/dlang with regular updates.
 [^2]: you need to enable dlang overlay by running `eselect repository enable dlang`.
@@ -36,5 +35,4 @@ Write some ebuilds to pass the time with Gentoo Linux.
 [^6]: borrowed from https://gitlab.com/Perfect_Gentleman/PG_Overlay.
 [^7]: borrowed from https://github.com/Gig-OS/gig.
 [^8]: borrowed from https://github.com/gentoo/guru. You need to enable guru overlay to use it.
-[^9]: borrowed from https://github.com/BROverlay/overlay.
 

@@ -39,6 +39,6 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 
 ### Cleaning Obsolete Packages (treeclean)
 - Remove the entire package directory: `[category]/[package]`.
-- Search the repository for any lingering references to the package and remove them.
+- Search the repository for any lingering references to the package and remove them (make sure to respect .gitignore).
 - Prompt the user to stage the changes and commit them using `pkgdev commit --signoff`.
 - Ask the user if they want to push the changes or open a pull request.
