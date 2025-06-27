@@ -27,6 +27,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 ### Bumping Package Versions
 - To get the `SRC_URI`, refer to the previous version's ebuild. For GitHub-based projects, you can find the latest release via the GitHub API: `https://api.github.com/repos/[organization]/[project]/releases/latest`. For other sources, you may need to ask the user for the update retrieval method.
 - Create the new ebuild by copying the existing one.
+- **Important:** Do not manually replace variables like `${PV}` (Package Version) in the ebuild file. These are automatically populated by Gentoo's package manager based on the ebuild's filename.
 - Update all version-specific variables (e.g., `BUILD_ID`, `SRC_URI` hashes).
 - Verify if there are any new dependencies or removed features in the new version.
 - Regenerate the manifest using: `ebuild <package>.ebuild manifest --force`
