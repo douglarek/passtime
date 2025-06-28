@@ -85,4 +85,4 @@ References:
 - After making changes, stage the relevant files using `git add`.
 - If your changes involve modifications to `.ebuild` files, use `pkgdev commit --signoff`.
 - For any other changes (e.g., documentation, scripts), use a standard `git commit --signoff` and write a descriptive semantic commit message.
-- After committing, you can push the changes to a remote branch or open a pull request (e.g., `git push origin <current-branch>:<package-branch>`).
+- After committing, you should get the current branch name and ask the user if they want to push the changes to the remote. The prompt should display the current branch name.
