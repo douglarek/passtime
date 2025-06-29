@@ -1,6 +1,7 @@
 # Gentoo Overlay Development Guide
 
 ## Project Overview
+This guide is specifically tailored for Gentoo projects. It assumes the repository root contains a typical Gentoo overlay structure, including `profiles/eapi`.
 This repository is a Gentoo overlay containing custom ebuilds for packages not available in the official Gentoo portage tree.
 
 ## Ebuild Guidelines
