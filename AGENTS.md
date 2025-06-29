@@ -86,5 +86,5 @@ References:
 - After making changes, stage the relevant files using `git add`.
 - If your changes involve modifications to `.ebuild` files, use `pkgdev commit --signoff`.
 - For any other changes (e.g., documentation, scripts), use a standard `git commit --signoff` and write a descriptive semantic commit message.
-- After a successful commit, ask the user if they want to add the assistant as a co-author. If they agree, the assistant should amend the previous commit, adding its own identity using a `Co-authored-by: [Assistant Name] <[assistant-email]>` trailer.
+- After a successful commit, ask the user if they want to add the assistant as a co-author. If they agree, the assistant should amend the previous commit, adding its own identity using a `Co-authored-by: [Assistant Name] <[assistant-email]>` trailer. For example: `git commit --amend --trailer="Co-authored-by: [Assistant Name] <[assistant-email]>"`
 - After committing (and potentially amending), you should get the current branch name and ask the user if they want to push the changes to the remote. The prompt should display the current branch name.
