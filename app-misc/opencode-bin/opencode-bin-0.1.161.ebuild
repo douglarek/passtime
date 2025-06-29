@@ -17,6 +17,7 @@ KEYWORDS="-* ~amd64"
 BDEPEND="app-arch/unzip"
 
 RESTRICT="strip"
+QA_PREBUILT="opencode"
 
 src_install() {
 	dobin opencode
