@@ -40,7 +40,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - Regenerate the manifest again to remove the old entry: `ebuild <package>.ebuild manifest --force`
 
 ### Special Cases
-- **app-editors/cursor**: **MANDATORY INSTRUCTION.** To get the latest version, you **MUST** use the following command and **MUST NOT** use a web search: `curl -s -L "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"`. This is the only authoritative source.
+- **app-editors/cursor**: **MANDATORY INSTRUCTION.** To get the latest version, you **MUST** execute the following command exactly as written, and then parse its raw JSON output to extract the version and download URL. You **MUST NOT** modify this command or attempt to infer its behavior. This is the only authoritative source: `curl -s -L "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"`
 
 ### Cleaning Obsolete Packages (treeclean)
 - Remove the entire package directory: `[category]/[package]`.
