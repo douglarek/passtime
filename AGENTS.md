@@ -93,6 +93,14 @@ Follow this sequence strictly for every commit:
     *   For `.ebuild` changes, use `pkgdev commit --signoff`.
     *   For other changes, use `git commit --signoff` with a semantic message.
 3.  **Verify Commit:** Ensure the commit was successful.
-4.  **Handle GitHub Issues (MANDATORY):** **After** a successful package upgrade commit, you **MUST** ask the user if they want to close a related GitHub issue. If they provide a URL, amend the commit with a `Closes:` trailer.
-5.  **Add Co-Author (MANDATORY):** **Immediately after** the previous step (or after the commit if the previous step is skipped), you **MUST** ask the user if they want to add the assistant as a co-author. If they agree, amend the commit with a `Co-authored-by:` trailer.
+4.  **Handle Related Issues (MANDATORY for Package Upgrades):** After a package upgrade commit, perform the following:
+    a. **Identify Remote Host:** Run `git remote -v` to inspect the remote URL.
+    b. **GitHub-Specific Workflow:** If the remote URL points to a GitHub repository (i.e., contains `github.com`):
+        i. **Parse Repository:** Extract the `OWNER/REPO` from the URL.
+        ii. **Fetch Open Issues:** Use `curl` to call the GitHub Issues API (`https://api.github.com/repos/OWNER/REPO/issues`).
+        iii. **Filter and Present:** Compare the upgraded package's name with the issue titles. Present a numbered list of potential matches (Title + URL) to the user.
+        iv. **Confirm and Close:** Ask the user to select an issue to close from the list. If they do, amend the commit with the corresponding `Closes: [issue URL]` trailer.
+    c. **Default Workflow (for non-GitHub remotes):** If the remote is not hosted on GitHub, simply ask the user if they want to close a related issue. If they provide a URL, amend the commit.
+    d. **Proceed:** If no relevant issues are found or the user provides no URL, proceed to the next step.
+5.  **Add Co-Author (MANDATORY):** **Immediately after** the previous step, you **MUST** ask the user if they want to add the assistant as a co-author. If they agree, amend the commit with a `Co-authored-by:` trailer.
 6.  **Push to Remote:** **Only after** completing all the above steps, get the current branch name and ask the user if they want to push the changes to the remote.
