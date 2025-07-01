@@ -84,13 +84,15 @@ References:
 - https://seesparkbox.com/foundry/semantic_commit_messages
 - http://karma-runner.github.io/1.0/dev/git-commit-msg.html
 
-#### Commit Workflow
+#### Commit Workflow Sequence
 
-- All commits must be signed off (`--signoff`).
-- All commit messages must be in English.
-- After making changes, stage the relevant files using `git add`.
-- If your changes involve modifications to `.ebuild` files, use `pkgdev commit --signoff`.
-- For any other changes (e.g., documentation, scripts), use a standard `git commit --signoff` and write a descriptive semantic commit message.
-- **After a package upgrade, you MUST ask the user if they want to close a related GitHub issue.** If they provide an issue URL, you should amend the previous commit by adding a `Closes: [issue URL]` trailer. For example: `git commit --amend --trailer="Closes: https://github.com/douglarek/passtime/issues/99"`
-- **Immediately after a successful commit, you MUST ask the user if they want to add the assistant as a-author.** If they agree, the assistant should amend the previous commit, adding its own identity using a `Co-authored-by: [Assistant Name] <[assistant-email]>` trailer. For example: `git commit --amend --trailer="Co-authored-by: [Assistant Name] <[assistant-email]>"`
-- After committing (and potentially amending), you should get the current branch name and ask the user if they want to push the changes to the remote. The prompt should display the current branch name.
+Follow this sequence strictly for every commit:
+
+1.  **Stage Changes:** Stage all relevant files using `git add`.
+2.  **Commit:**
+    *   For `.ebuild` changes, use `pkgdev commit --signoff`.
+    *   For other changes, use `git commit --signoff` with a semantic message.
+3.  **Verify Commit:** Ensure the commit was successful.
+4.  **Handle GitHub Issues (MANDATORY):** **After** a successful package upgrade commit, you **MUST** ask the user if they want to close a related GitHub issue. If they provide a URL, amend the commit with a `Closes:` trailer.
+5.  **Add Co-Author (MANDATORY):** **Immediately after** the previous step (or after the commit if the previous step is skipped), you **MUST** ask the user if they want to add the assistant as a co-author. If they agree, amend the commit with a `Co-authored-by:` trailer.
+6.  **Push to Remote:** **Only after** completing all the above steps, get the current branch name and ask the user if they want to push the changes to the remote.
