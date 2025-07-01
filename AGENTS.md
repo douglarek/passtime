@@ -26,6 +26,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - Include the `QA_PREBUILT` variable for any pre-compiled files.
 
 ### Bumping Package Versions
+- **CRITICAL RULE:** Before attempting to determine a package's new version or `SRC_URI`, you **MUST** first check the `Special Cases` section below. If the package is listed there, you **MUST** follow the specific instructions provided and **MUST NOT** use any other method (like GitHub API or web search) to find the version or download link.
 - Before upgrading an ebuild, prompt the user if they want to create a new branch for the commit. This new branch should generally be named after the actual package name.
 - To get the `SRC_URI`, refer to the previous version's ebuild. For GitHub-based projects, you can find the latest release via the GitHub API: `https://api.github.com/repos/[organization]/[project]/releases/latest`. The information from the GitHub API is considered authoritative and does not require confirmation with a web search. Always prioritize using `curl` for GitHub API requests; use `web_fetch` only if `curl` is unavailable on the system. For other sources, you may need to ask the user for the update retrieval method.
 - Create the new ebuild by copying the existing one.
@@ -37,6 +38,9 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - Run QA checks using: `pkgcheck scan --verbose <package>.ebuild`
 - Remove the old ebuild file.
 - Regenerate the manifest again to remove the old entry: `ebuild <package>.ebuild manifest --force`
+
+### Special Cases
+- **app-editors/cursor**: **MANDATORY INSTRUCTION.** To get the latest version, you **MUST** use the following command and **MUST NOT** use a web search: `curl -s -L "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"`. This is the only authoritative source.
 
 ### Cleaning Obsolete Packages (treeclean)
 - Remove the entire package directory: `[category]/[package]`.
