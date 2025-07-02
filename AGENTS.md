@@ -27,6 +27,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 
 ### Bumping Package Versions
 - **CRITICAL RULE:** Before attempting to determine a package's new version or `SRC_URI`, you **MUST** first check the `Special Cases` section below. If the package is listed there, you **MUST** follow the specific instructions provided and **MUST NOT** use any other method (like GitHub API or web search) to find the version or download link.
+- When the user asks which packages need to be upgraded, or does not specify the name of the package to be upgraded, you **MUST** first check for relevant issues on GitHub. To do this, you will run `git remote -v`, and for each remote URL that points to a GitHub repository, you will fetch the open issues using the API (`https://api.github.com/repos/OWNER/REPO/issues`).
 - Before upgrading an ebuild, prompt the user if they want to create a new branch for the commit. This new branch should generally be named after the actual package name.
 - To get the `SRC_URI`, refer to the previous version's ebuild. For GitHub-based projects, you can find the latest release via the GitHub API: `https://api.github.com/repos/[organization]/[project]/releases/latest`. The information from the GitHub API is considered authoritative and does not require confirmation with a web search. Always prioritize using `curl` for GitHub API requests; use `web_fetch` only if `curl` is unavailable on the system. For other sources, you may need to ask the user for the update retrieval method.
 - Create the new ebuild by copying the existing one.
@@ -61,11 +62,11 @@ Follow this sequence strictly for every commit:
 3.  **Verify Commit:** Ensure the commit was successful.
 4.  **Handle Related Issues (MANDATORY for Package Upgrades):** After a package upgrade commit, perform the following:
 
-    1. **Identify Remote Host:** Run `git remote -v` to inspect the remote URL.
-    2. **GitHub-Specific Workflow:** If the remote URL points to a GitHub repository (i.e., contains `github.com`):
+    1. **Identify Remote Hosts:** Run `git remote -v` to inspect all remote URLs.
+    2. **GitHub-Specific Workflow:** For each remote URL that points to a GitHub repository (i.e., contains `github.com`):
         1. **Parse Repository:** Extract the `OWNER/REPO` from the URL.
-        2. **Fetch Open Issues:** Use `curl` to call the GitHub Issues API (`https://api.github.com/repos/OWNER/REPO/issues`).
-        3. **Filter and Present:** Compare the upgraded package's name with the issue titles. Present a numbered list of potential matches (Title + URL) to the user.
+        2. **Fetch Open Issues:** Use `curl` to call the GitHub Issues API (`https://api.github.com/repos/OWNER/REPO/issues`) for that repository.
+    3. **Filter and Present:** Consolidate the issues gathered from all remotes. Compare the upgraded package's name with the issue titles. Present a numbered list of potential matches (Title + URL) to the user.
         4. **Confirm and Close:** Ask the user to select an issue to close from the list. If they do, amend the commit with the corresponding `Closes: [issue URL]` trailer.
     3. **Default Workflow (for non-GitHub remotes):** If the remote is not hosted on GitHub, simply ask the user if they want to close a related issue. If they provide a URL, amend the commit.
     4. **Proceed:** If no relevant issues are found or the user provides no URL, or if the commit is not a package upgrade, proceed to the next step.
