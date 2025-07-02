@@ -21,7 +21,6 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | app-text/goldendict-ng[^6]   | The Next Generation GoldenDict                                            | [https://github.com/xiaoyifang/goldendict-ng](https://github.com/xiaoyifang/goldendict-ng)                                    |
 | dev-util/osc[^7]             | The Command Line Interface to work with an Open Build Service             | [https://github.com/openSUSE/osc](https://github.com/openSUSE/osc)                                                            |
 | dev-util/android-tools-bin   | Android platform tools (adb, fastboot)                                    | [https://developer.android.com/tools/releases/platform-tools](https://developer.android.com/tools/releases/platform-tools)    |
-
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more     | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code          | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
 | app-misc/opencode-bin        | AI coding agent, built for the terminal                                   | [https://github.com/sst/opencode](https://github.com/sst/opencode)                                                            |
