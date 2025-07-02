@@ -69,4 +69,5 @@ Follow this sequence strictly for every commit:
     c. **Default Workflow (for non-GitHub remotes):** If the remote is not hosted on GitHub, simply ask the user if they want to close a related issue. If they provide a URL, amend the commit.
     d. **Proceed:** If no relevant issues are found or the user provides no URL, or if the commit is not a package upgrade, proceed to the next step.
 5.  **Add Co-Author (MANDATORY):** **Immediately after** the previous step, you **MUST** ask the user if they want to add the assistant as a co-author. If they agree, amend the commit with a `Co-authored-by:` trailer.
-6.  **Push to Remote:** **Only after** completing all the above steps, get the current branch name and ask the user if they want to push the changes to the remote.
+6.  **Verify Commit Message (MANDATORY):** After amending the commit, you **MUST** run `git show --format=%B -s` to inspect the full commit message and ensure all required trailers (e.g., `Closes:`, `Co-authored-by:`) are present and correctly formatted. If any are missing or incorrect, you **MUST** re-amend the commit to fix them.
+7.  **Push to Remote:** **Only after** completing all the above steps, get the current branch name and ask the user if they want to push the changes to the remote.
