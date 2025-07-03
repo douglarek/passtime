@@ -39,6 +39,8 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - Run QA checks using: `pkgcheck scan --verbose <package>.ebuild`
 - Remove the old ebuild file. you **MUST** use `git rm` instead of `rm` to ensure the change is tracked by Git.
 - Regenerate the manifest again to remove the old entry: `ebuild <package>.ebuild manifest --force`
+- After a successful upgrade and commit, if a new branch was created for the upgrade, prompt the user if they want to delete this branch.
+- If a new branch was used for an upgrade, and the user wants to upgrade another package, they **MUST** first switch back to the `master` branch before creating a new branch for the second upgrade.
 
 ### Special Cases
 - **app-editors/cursor**: **MANDATORY INSTRUCTION.** To get the latest version, you **MUST** execute the following command exactly as written, and then parse its raw JSON output to extract the version and download URL. You **MUST NOT** modify this command or attempt to infer its behavior. This is the only authoritative source: `curl -s -L "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"`
