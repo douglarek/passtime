@@ -37,7 +37,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - Regenerate the manifest using: `ebuild <package>.ebuild manifest --force`
 - Test the ebuild installation with: `ebuild <package>.ebuild configure`
 - Run QA checks using: `pkgcheck scan --verbose <package>.ebuild`
-- Remove the old ebuild file.
+- Remove the old ebuild file. you **MUST** use `git rm` instead of `rm` to ensure the change is tracked by Git.
 - Regenerate the manifest again to remove the old entry: `ebuild <package>.ebuild manifest --force`
 
 ### Special Cases
