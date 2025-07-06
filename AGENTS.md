@@ -59,7 +59,7 @@ Follow this sequence strictly for every commit:
 
 1.  **Stage Changes:** Stage only the relevant files using `git add [specific files]`. When upgrading a package, only add the necessary files (e.g., new ebuild, manifest, metadata changes). **NEVER use `git add .`** which could stage unintended files. If uncertain about which files to stage, ask the user for confirmation.
 2.  **Commit:**
-    *   For `.ebuild` changes, use `pkgdev commit --signoff`.
+    *   For `.ebuild` changes, use `pkgdev commit --signoff`. **CRITICAL: You MUST NOT use the `--message` or `-m` flag.** `pkgdev` automatically generates the required commit message; using these flags interferes with the correct, automated workflow.
     *   For other changes, use `git commit --signoff` with a semantic message.
 3.  **Verify Commit:** Ensure the commit was successful.
 4.  **Handle Related Issues (MANDATORY for Package Upgrades):** After a package upgrade commit, perform the following:
