@@ -115,7 +115,7 @@ Follow this sequence strictly for every commit:
     1. **Identify Remote Hosts:** Run `git remote -v` to inspect all remote URLs.
     2. **GitHub-Specific Workflow:** For each remote URL that points to a GitHub repository (i.e., contains `github.com`):
         1. **Parse Repository:** Extract the `OWNER/REPO` from the URL.
-        2. **Fetch Open Issues:** Use `curl` to call the GitHub Issues API (`https://api.github.com/repos/OWNER/REPO/issues`) for that repository.
+        2. **Fetch Open Issues:** Use `curl -sL` to call the GitHub Issues API (`https://api.github.com/repos/OWNER/REPO/issues`) for that repository.
     3. **Filter and Present:** Consolidate the issues gathered from all remotes. Compare the upgraded package's name with the issue titles. Present a numbered list of potential matches (Title + URL) to the user.
         4. **Confirm and Close:** Ask the user to select an issue to close from the list. If they do, amend the commit with the corresponding `Closes: [issue URL]` trailer.
     3. **Default Workflow (for non-GitHub remotes):** If the remote is not hosted on GitHub, simply ask the user if they want to close a related issue. If they provide a URL, amend the commit.
