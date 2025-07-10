@@ -113,7 +113,7 @@ Follow this sequence strictly for every commit:
     *   For `.ebuild` changes, use `pkgdev commit --signoff`. **CRITICAL: You MUST NOT use the `--message` or `-m` flag.** `pkgdev` automatically generates the required commit message; using these flags interferes with the correct, automated workflow.
     *   For other changes, use `git commit --signoff` with a semantic message.
 3.  **Verify Commit:** Ensure the commit was successful.
-4.  **Handle Related Issues (MANDATORY for Package Upgrades):** After a package upgrade commit, perform the following:
+4.  **Handle Related Issues (MANDATORY for Package Upgrades):** For modifications to non-Gentoo packages, there is no need to check GitHub issues. After a package upgrade commit, perform the following:
 
     1. **Identify Remote Hosts:** Run `git remote -v` to inspect all remote URLs.
     2. **GitHub-Specific Workflow:** For each remote URL that points to a GitHub repository (i.e., contains `github.com`):
