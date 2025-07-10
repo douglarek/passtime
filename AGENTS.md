@@ -76,7 +76,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - When the user asks which packages need to be upgraded, or does not specify the name of the package to be upgraded, you **MUST** first check for relevant issues on GitHub. To do this, you will run `git remote -v`, and for each remote URL that points to a GitHub repository, you will fetch the open issues using the API (`https://api.github.com/repos/OWNER/REPO/issues`).
 - **MANDATORY BRANCH PROMPT:** Before upgrading any ebuild, you **MUST** always prompt the user if they want to create a new branch for the commit. This new branch should generally be named after the actual package name. This is a non-negotiable requirement that must be followed for every ebuild upgrade.
 - To get the `SRC_URI`, refer to the previous version's ebuild. For GitHub-based projects, you can find the latest release via the GitHub API: `https://api.github.com/repos/[organization]/[project]/releases/latest`. The information from the GitHub API is considered authoritative and does not require confirmation with a web search. Always prioritize using `curl` for GitHub API requests; use `web_fetch` only if `curl` is unavailable on the system. For example: `curl -sL https://api.github.com/repos/YOUR_ORGANIZATION/YOUR_REPOSITORY/releases/latest` .
-- If `.github/workflows/overlay.toml` exists, and a package's `source` is `regex`, use the `url` specified in `overlay.toml` for that package to determine the latest version. For other sources, you may need to ask the user for the update retrieval method.
+- If `.github/workflows/overlay.toml` exists, and a package's `source` is `regex`, use the `url` specified in `overlay.toml` for that package to determine the latest version via `curl -sL [url]`. For other sources, you may need to ask the user for the update retrieval method.
 - Create the new ebuild by copying the existing one.
 - **Important:** Do not manually replace variables like `${PV}` (Package Version) in the ebuild file. These are automatically populated by Gentoo's package manager based on the ebuild's filename.
 - Update all version-specific variables (e.g., `BUILD_ID`, `SRC_URI` hashes).
@@ -91,7 +91,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - If a new branch was used for an upgrade, and the user wants to upgrade another package, they **MUST** first switch back to the `master` branch before creating a new branch for the second upgrade.
 
 ### Special Cases
-- **app-editors/cursor**: **MANDATORY INSTRUCTION.** To get the latest version, you **MUST** execute the following command exactly as written, and then parse its raw JSON output to extract the version and download URL. You **MUST NOT** modify this command or attempt to infer its behavior. This is the only authoritative source: `curl -s -L "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"`
+- **app-editors/cursor**: **MANDATORY INSTRUCTION.** To get the latest version, you **MUST** execute the following command exactly as written, and then parse its raw JSON output to extract the version and download URL. You **MUST NOT** modify this command or attempt to infer its behavior. This is the only authoritative source: `curl -sL "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"`
 
 ### Cleaning Obsolete Packages (treeclean)
 - Remove the entire package directory: `[category]/[package]`.
