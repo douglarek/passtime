@@ -119,10 +119,9 @@ Follow this sequence strictly for every commit:
         4. **Confirm and Close:** Ask the user to select an issue to close from the list. If they do, amend the commit with the corresponding `Closes: [issue URL]` trailer.
     3. **Default Workflow (for non-GitHub remotes):** If the remote is not hosted on GitHub, simply ask the user if they want to close a related issue. If they provide a URL, amend the commit.
     4. **Proceed:** If no relevant issues are found or the user provides no URL, or if the commit is not a package upgrade, proceed to the next step.
-5.  **Add Co-Author (MANDATORY):** **Immediately after** the previous step, you **MUST** ask the user if they want to add the assistant as a co-author. If they agree, amend the commit with the appropriate `Co-authored-by:` trailer based on the AI assistant being used (see Global Rules section for specific formats).
-6.  **Verify Commit Message (MANDATORY):** After amending the commit, you **MUST** run `git show --format=%B -s` to inspect the full commit message and ensure all required trailers (e.g., `Closes:`, `Co-authored-by:`) are present and correctly formatted. If any are missing or incorrect, you **MUST** re-amend the commit to fix them.
-7.  **Push to Remote:** **Only after** completing all the above steps, get the current branch name and ask the user if they want to push the changes to the remote.
-8.  **Display Repository Link (MANDATORY):** **Immediately after** successfully pushing to the remote, you **MUST** display the repository access link to allow the user to verify the changes. Extract the repository URL from `git remote -v` and convert it to a web-accessible format:
+5.  **Verify Commit Message (MANDATORY):** After amending the commit, you **MUST** run `git show --format=%B -s` to inspect the full commit message and ensure all required trailers (e.g., `Closes:`, `Co-authored-by:`) are present and correctly formatted. If any are missing or incorrect, you **MUST** re-amend the commit to fix them.
+6.  **Push to Remote:** **Only after** completing all the above steps, get the current branch name and ask the user if they want to push the changes to the remote.
+7.  **Display Repository Link (MANDATORY):** **Immediately after** successfully pushing to the remote, you **MUST** display the repository access link to allow the user to verify the changes. Extract the repository URL from `git remote -v` and convert it to a web-accessible format:
     - For GitHub SSH URLs (`git@github.com:owner/repo.git`): Convert to `https://github.com/owner/repo`
     - For GitLab SSH URLs (`git@gitlab.com:owner/repo.git`): Convert to `https://gitlab.com/owner/repo`
     - For other Git hosting services: Apply similar SSH-to-HTTPS conversion patterns
