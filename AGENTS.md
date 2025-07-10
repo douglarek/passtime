@@ -83,6 +83,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - Regenerate the manifest using: `ebuild <package>.ebuild manifest --force`
 - Test the ebuild installation with: `ebuild <package>.ebuild configure`
 - Run QA checks using: `pkgcheck scan --verbose <package>.ebuild`
+- **COMMIT LOGIC:** When upgrading a package, you **MUST** ensure that the addition of the new ebuild and the removal of the old ebuild happen in a logical sequence. The preferred method is to perform both actions in a single commit. Alternatively, you can first add the new package in one commit, and then remove the old package in a subsequent commit. You **MUST NOT** first remove the old package in one commit and then add the new one in a later commit, as this would leave the repository in a broken state between commits.
 - Remove the old ebuild file. you **MUST** use `git rm` instead of `rm` to ensure the change is tracked by Git.
 - Regenerate the manifest again to remove the old entry: `ebuild <package>.ebuild manifest --force`
 - After a successful upgrade and commit, if a new branch was created for the upgrade, prompt the user if they want to delete this branch.
