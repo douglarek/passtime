@@ -100,6 +100,7 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - Remove the entire package directory: `[category]/[package]`.
 - Search the repository for any lingering references to the package and remove them (make sure to respect .gitignore).
 
+### Committing Changes
 #### Commit Workflow Sequence
 
 Follow this sequence strictly for every commit:
