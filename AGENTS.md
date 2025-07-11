@@ -81,9 +81,12 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 - **Important:** Do not manually replace variables like `${PV}` (Package Version) in the ebuild file. These are automatically populated by Gentoo's package manager based on the ebuild's filename.
 - Update all version-specific variables (e.g., `BUILD_ID`, `SRC_URI` hashes).
 - Verify if there are any new dependencies or removed features in the new version.
-- Regenerate the manifest using: `ebuild <package>.ebuild manifest --force`
-- Test the ebuild installation with: `ebuild <package>.ebuild configure`
-- Run QA checks using: `pkgcheck scan --verbose <package>.ebuild`
+- ### Pre-Commit Quality Assurance (MANDATORY)
+  **CRITICAL RULE:** After generating the manifest and before any commit, you **MUST** run a QA check. The commit **MUST NOT** proceed if `pkgcheck` reports any errors.
+  1.  **Regenerate Manifest:** `ebuild <package>.ebuild manifest --force`
+  2.  **Run QA Check (MANDATORY):** `pkgcheck scan --verbose <package>.ebuild`
+  3.  **Fix Errors:** If there are any errors, fix them and repeat the process from step 1.
+  4.  **Commit:** Only proceed to commit after `pkgcheck` passes without any errors.
 - **COMMIT LOGIC:** When upgrading a package, you **MUST** ensure that the addition of the new ebuild and the removal of the old ebuild happen in a logical sequence. The preferred method is to perform both actions in a single commit. Alternatively, you can first add the new package in one commit, and then remove the old package in a subsequent commit. You **MUST NOT** first remove the old package in one commit and then add the new one in a later commit, as this would leave the repository in a broken state between commits.
 - Remove the old ebuild file using `git rm` to ensure the change is tracked.
 - After removing the old ebuild, you **MUST** regenerate the manifest by running `ebuild <new-package-version>.ebuild manifest --force`. This cleans the `Manifest` file by removing the entry for the old, deleted ebuild.
@@ -96,10 +99,6 @@ This repository is a Gentoo overlay containing custom ebuilds for packages not a
 ### Cleaning Obsolete Packages (treeclean)
 - Remove the entire package directory: `[category]/[package]`.
 - Search the repository for any lingering references to the package and remove them (make sure to respect .gitignore).
-
-### Committing Changes
-
-
 
 #### Commit Workflow Sequence
 
