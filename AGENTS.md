@@ -1,118 +1,134 @@
-# Global Rules
+# Gentoo Overlay Development Guidelines
 
-1.  **Commit Co-authorship:** After every successful `git commit`, automatically run:
-    `git commit --amend --no-edit --trailer="Co-authored-by: [AI_ASSISTANT_NAME] <noreply@[AI_PLATFORM]>"`
-    *   For opencode: `Co-authored-by: opencode <noreply@opencode.ai>`
-    *   For Gemini CLI: `Co-authored-by: gemini <noreply@google.ai>`
-    *   For Claude Code: `Co-authored-by: claude <noreply@anthropic.com>`
-    *   For GitHub Copilot: `Co-authored-by: copilot <noreply@github.com>`
+## Global Rules
 
-2.  **Semantic Commit Messages:** Use the Conventional Commits format: `<type>(<scope>): <subject>`
-    *   **Example:** `feat: add hat wobble`
-    *   **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`.
+1. **Commit Co-authorship:** After every successful `git commit`, automatically run:
+   ```
+   git commit --amend --no-edit --trailer="Co-authored-by: [AI_ASSISTANT_NAME] <noreply@[AI_PLATFORM]>"
+   ```
+   * For opencode: `Co-authored-by: opencode <noreply@opencode.ai>`
+   * For Gemini CLI: `Co-authored-by: gemini <noreply@google.ai>`
+   * For Claude Code: `Co-authored-by: claude <noreply@anthropic.com>`
+   * For GitHub Copilot: `Co-authored-by: copilot <noreply@github.com>`
 
-3.  **Force Push Confirmation:** ALWAYS ask for user confirmation before `git push --force`.
+2. **Semantic Commit Messages:** Use the Conventional Commits format: `<type>(<scope>): <subject>`
+   * **Example:** `feat: add hat wobble`
+   * **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
-# Gentoo Overlay Development Guide
+3. **Force Push Confirmation:** ALWAYS ask for user confirmation before `git push --force`
+
+---
+
+## Gentoo Overlay Development Guide
 
 This guide is for Gentoo overlay projects with a typical structure (e.g., `profiles/eapi`). This repository contains custom ebuilds.
 
-## Ebuild Guidelines
+### Ebuild Guidelines
 
-### Core Principles
-*   Adhere to Gentoo ebuild standards.
-*   Use `EAPI=8` for new ebuilds (unless backward compatibility is required).
-*   Include copyright headers and `metadata.xml` for all packages.
-*   Follow upstream versioning.
+#### Core Principles
+* Adhere to Gentoo ebuild standards
+* Use `EAPI=8` for new ebuilds (unless backward compatibility is required)
+* Include copyright headers and `metadata.xml` for all packages
+* Follow upstream versioning
 
-### Directory Structure
-*   Place ebuilds in `[category]/[package]`.
-*   Ensure `Manifest` and `metadata.xml` files are present.
+#### Directory Structure
+* Place ebuilds in `[category]/[package]`
+* Ensure `Manifest` and `metadata.xml` files are present
 
-### Common Ebuild Patterns
-*   **Binary Packages:** Define `SRC_URI` with descriptive filenames.
-*   **Dependencies:** Specify `DEPEND` and `RDEPEND`.
-*   **Keywords:** Set `KEYWORDS` (e.g., `~amd64`).
-*   **Restrictions:** Configure `RESTRICT` (e.g., `bindist`).
-*   **Pre-compiled Files:** Use `QA_PREBUILT`.
+#### Common Ebuild Patterns
+* **Binary Packages:** Define `SRC_URI` with descriptive filenames
+* **Dependencies:** Specify `DEPEND` and `RDEPEND`
+* **Keywords:** Set `KEYWORDS` (e.g., `~amd64`)
+* **Restrictions:** Configure `RESTRICT` (e.g., `bindist`)
+* **Pre-compiled Files:** Use `QA_PREBUILT`
+
+---
 
 ### Bumping Package Versions
 
-1.  **Check Special Cases FIRST:** Before determining a new version or `SRC_URI`, consult the `Special Cases` section below. If listed, follow its instructions ONLY.
+1. **Check Special Cases FIRST:** Before determining a new version or `SRC_URI`, consult the `Special Cases` section below. If listed, follow its instructions ONLY.
 
-2.  **Identify Upgrade Needs:** If the user asks which packages need upgrading, or doesn't specify, check GitHub issues:
-    *   Run `git remote -v`.
-    *   For each GitHub remote (`github.com`), fetch open issues via `curl -sL https://api.github.com/repos/OWNER/REPO/issues`.
-    *   Present potential matches (Title + URL) to the user.
+2. **Identify Upgrade Needs:** If the user asks which packages need upgrading, or doesn't specify, check GitHub issues:
+   * Run `git remote -v`
+   * For each GitHub remote (`github.com`), fetch open issues via `curl -sL https://api.github.com/repos/OWNER/REPO/issues`
+   * Present potential matches (Title + URL) to the user
 
-3.  **Branch Prompt (MANDATORY):** ALWAYS ask the user if they want to create a new branch for the commit, typically named after the package.
+3. **Branch Prompt (MANDATORY):** ALWAYS ask the user if they want to create a new branch for the commit, typically named after the package
 
-4.  **Get `SRC_URI`:**
-    *   Refer to the previous ebuild.
-    *   For GitHub projects, use `curl -sL https://api.github.com/repos/[organization]/[project]/releases/latest`. This is authoritative.
-    *   If `.github/workflows/overlay.toml` exists and a package `source` is `regex`, use its `url` with `curl -sL [url]`.
+4. **Get `SRC_URI`:**
+   * Refer to the previous ebuild
+   * For GitHub projects, use `curl -sL https://api.github.com/repos/[organization]/[project]/releases/latest`. This is authoritative
+   * If `.github/workflows/overlay.toml` exists and a package `source` is `regex`, use its `url` with `curl -sL [url]`
 
-5.  **Create New Ebuild:** Copy the existing ebuild. Do NOT manually replace `${PV}`.
+5. **Create New Ebuild:** Copy the existing ebuild. Do NOT manually replace `${PV}`
 
-6.  **Update Variables:** Update version-specific variables (e.g., `BUILD_ID`, `SRC_URI` hashes).
+6. **Update Variables:** Update version-specific variables (e.g., `BUILD_ID`, `SRC_URI` hashes)
 
-7.  **Verify Dependencies/Features:** Check for new dependencies or removed features.
+7. **Verify Dependencies/Features:** Check for new dependencies or removed features
 
-8.  **Pre-Commit Quality Assurance (MANDATORY):**
-    1.  **Regenerate Manifest:** `ebuild <package>.ebuild manifest --force`
-    2.  **Run QA Check:** `pkgcheck scan --verbose <package>.ebuild`
-    3.  **Fix Errors:** Repeat if `pkgcheck` reports errors.
-    4.  **Commit:** Proceed only after `pkgcheck` passes.
+8. **Pre-Commit Quality Assurance (MANDATORY):**
+   1. **Regenerate Manifest:** `ebuild <package>.ebuild manifest --force`
+   2. **Run QA Check:** `pkgcheck scan --verbose <package>.ebuild`
+   3. **Fix Errors:** Repeat if `pkgcheck` reports errors
+   4. **Commit:** Proceed only after `pkgcheck` passes
 
-9.  **Commit Logic:**
-    *   Add the new ebuild and remove the old one in a single commit.
-    *   Alternatively, add the new ebuild first, then remove the old one in a subsequent commit.
-    *   NEVER remove the old ebuild before adding the new one.
+9. **Commit Logic:**
+   * Add the new ebuild and remove the old one in a single commit
+   * Alternatively, add the new ebuild first, then remove the old one in a subsequent commit
+   * NEVER remove the old ebuild before adding the new one
 
-10. **Remove Old Ebuild:** Use `git rm` for the old ebuild file.
+10. **Remove Old Ebuild:** Use `git rm` for the old ebuild file
 
-11. **Regenerate Manifest (Post-Removal):** After removing the old ebuild, run `ebuild <new-package-version>.ebuild manifest --force` to clean the `Manifest` file.
+11. **Regenerate Manifest (Post-Removal):** After removing the old ebuild, run `ebuild <new-package-version>.ebuild manifest --force` to clean the `Manifest` file
 
-12. **Branch Deletion:** If a new branch was created, prompt the user to delete it after a successful upgrade and commit.
+12. **Branch Deletion:** If a new branch was created, prompt the user to delete it after a successful upgrade and commit
 
-13. **Multiple Upgrades:** If upgrading another package, ensure the user switches back to the `master` branch first.
+13. **Multiple Upgrades:** If upgrading another package, ensure the user switches back to the `master` branch first
+
+---
 
 ### Special Cases
-*   **app-editors/cursor**: To get the latest version, execute EXACTLY:
-    `curl -sL "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"`
-    Parse its JSON output for version and download URL. Do NOT modify this command.
+* **app-editors/cursor**: To get the latest version, execute EXACTLY:
+  ```
+  curl -sL "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
+  ```
+  Parse its JSON output for version and download URL. Do NOT modify this command.
+
+---
 
 ### Cleaning Obsolete Packages (treeclean)
-*   Remove the entire package directory: `[category]/[package]`.
-*   Search and remove any lingering references (respect `.gitignore`).
+* Remove the entire package directory: `[category]/[package]`
+* Search and remove any lingering references (respect `.gitignore`)
+
+---
 
 ### Committing Changes
 
 Follow this sequence strictly for every commit:
 
-1.  **Stage Changes:** Use `git add [specific files]`. For package upgrades, only stage necessary files (new ebuild, manifest, metadata). **NEVER use `git add .`**.
+1. **Stage Changes:** Use `git add [specific files]`. For package upgrades, only stage necessary files (new ebuild, manifest, metadata). **NEVER use `git add .`**
 
-2.  **Commit:**
-    *   For `.ebuild` changes: `pkgdev commit --signoff`. **DO NOT use `--message` or `-m`**.
-    *   For other changes: `git commit --signoff` with a semantic message.
+2. **Commit:**
+   * For `.ebuild` changes: `pkgdev commit --signoff`. **DO NOT use `--message` or `-m`**
+   * For other changes: `git commit --signoff` with a semantic message
 
-3.  **Verify Commit:** Ensure the commit was successful.
+3. **Verify Commit:** Ensure the commit was successful
 
-4.  **Handle Related Issues (MANDATORY for Package Upgrades):**
-    *   **Identify Remotes:** Run `git remote -v`.
-    *   **GitHub Remotes:** For each `github.com` remote:
-        *   Extract `OWNER/REPO`.
-        *   Fetch open issues: `curl -sL https://api.github.com/repos/OWNER/REPO/issues`.
-        *   Present a numbered list of potential matches (Title + URL) to the user.
-        *   Ask the user to select an issue to close. If selected, amend the commit with `Closes: [issue URL]`.
-    *   **Non-GitHub Remotes:** Ask the user if they want to close a related issue. If they provide a URL, amend the commit.
-    *   **Proceed:** If no issues are found/provided, or not a package upgrade, proceed.
+4. **Handle Related Issues (MANDATORY for Package Upgrades):**
+   * **Identify Remotes:** Run `git remote -v`
+   * **GitHub Remotes:** For each `github.com` remote:
+     * Extract `OWNER/REPO`
+     * Fetch open issues: `curl -sL https://api.github.com/repos/OWNER/REPO/issues`
+     * Present a numbered list of potential matches (Title + URL) to the user
+     * Ask the user to select an issue to close. If selected, amend the commit with `Closes: [issue URL]`
+   * **Non-GitHub Remotes:** Ask the user if they want to close a related issue. If they provide a URL, amend the commit
+   * **Proceed:** If no issues are found/provided, or not a package upgrade, proceed
 
-5.  **Verify Commit Message (MANDATORY):** After amending, run `git show --format=%B -s` to inspect the full commit message. Ensure all required trailers (e.g., `Closes:`, `Co-authored-by:`) are present and correctly formatted. Re-amend if needed.
+5. **Verify Commit Message (MANDATORY):** After amending, run `git show --format=%B -s` to inspect the full commit message. Ensure all required trailers (e.g., `Closes:`, `Co-authored-by:`) are present and correctly formatted. Re-amend if needed
 
-6.  **Push to Remote:** Get the current branch name. Ask the user if they want to push changes to the remote.
+6. **Push to Remote:** Get the current branch name. Ask the user if they want to push changes to the remote
 
-7.  **Display Repository Link (MANDATORY):** After successful push, display the repository access link.
-    *   Extract URL from `git remote -v`.
-    *   Convert SSH to HTTPS (e.g., `git@github.com:owner/repo.git` -> `https://github.com/owner/repo`).
-    *   Display as: "Changes pushed successfully! Repository: [URL]
+7. **Display Repository Link (MANDATORY):** After successful push, display the repository access link
+   * Extract URL from `git remote -v`
+   * Convert SSH to HTTPS (e.g., `git@github.com:owner/repo.git` → `https://github.com/owner/repo`)
+   * Display as: "Changes pushed successfully! Repository: [URL]"
