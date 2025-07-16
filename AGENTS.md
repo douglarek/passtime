@@ -81,7 +81,7 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
 
 11. **Regenerate Manifest (Post-Removal):** After removing the old ebuild, run `ebuild <new-package-version>.ebuild manifest --force` to clean the `Manifest` file
 
-12. **Branch Deletion:** If a new branch was created, prompt the user to delete it after a successful upgrade and commit
+12. **Branch Deletion (MANDATORY):** If a new branch was created, ALWAYS prompt the user to delete it after a successful upgrade and commit. Ask: "Would you like to delete the [branch-name] branch and return to master? (y/n)"
 
 13. **Multiple Upgrades:** If upgrading another package, ensure the user switches back to the `master` branch first
 
@@ -132,3 +132,10 @@ Follow this sequence strictly for every commit:
    * Extract URL from `git remote -v`
    * Convert SSH to HTTPS (e.g., `git@github.com:owner/repo.git` → `https://github.com/owner/repo`)
    * Display as: "Changes pushed successfully! Repository: [URL]"
+
+8. **Branch Cleanup (MANDATORY):** After successful push, if working on a feature branch:
+   * Ask: "Would you like to delete the [branch-name] branch and return to master? (y/n)"
+   * If yes: 
+     * Switch to master: `git checkout master` 
+     * Delete branch: `git branch -d [branch-name]`
+   * Remind user that future package upgrades should start from master
