@@ -75,7 +75,9 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
 9. **Check Old Version Stability (MANDATORY):** Before deciding whether to remove old ebuild:
    * Read the old ebuild's `KEYWORDS` line
    * **If old version has stable keywords** (e.g., `amd64` without `~` prefix): MUST ASK user if they want to delete the old version
-   * **If old version has no stable keywords but upgrade crosses major versions** (e.g., `0.x` → `1.x`): MUST ASK user if they want to delete the old version
+   * **If old version has no stable keywords but upgrade crosses major/minor versions** (e.g., `1.2.3` → `1.3.0` or `1.2.3` → `2.0.0`): MUST ASK user if they want to delete the old version
+     - For semantic versioning (MAJOR.MINOR.PATCH), only MAJOR or MINOR version changes count as cross-version upgrades
+     - PATCH-only changes (e.g., `0.3.13` → `0.3.22`) do NOT count as cross-version upgrades
    * **Otherwise:** Can proceed with deletion automatically
 
 10. **Commit Logic:**
