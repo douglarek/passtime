@@ -72,18 +72,27 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
    3. **Fix Errors:** Repeat if `pkgcheck` reports errors
    4. **Commit:** Proceed only after `pkgcheck` passes
 
-9. **Commit Logic:**
-   * Add the new ebuild and remove the old one in a single commit
-   * Alternatively, add the new ebuild first, then remove the old one in a subsequent commit
-   * NEVER remove the old ebuild before adding the new one
+9. **Check Old Version Stability (MANDATORY):** Before deciding whether to remove old ebuild:
+   * Read the old ebuild's `KEYWORDS` line
+   * **If old version has stable keywords** (e.g., `amd64` without `~` prefix): MUST ASK user if they want to delete the old version
+   * **If old version has no stable keywords but upgrade crosses major versions** (e.g., `0.x` → `1.x`): MUST ASK user if they want to delete the old version
+   * **Otherwise:** Can proceed with deletion automatically
 
-10. **Remove Old Ebuild:** Use `git rm` for the old ebuild file
+10. **Commit Logic:**
+   * **Single Commit Approach (Recommended):** Add new ebuild, remove old ebuild, and regenerate manifest in one commit
+   * **Two Commit Approach:** 
+     1. First commit: Add new ebuild + manifest regeneration
+     2. Second commit: Remove old ebuild + manifest regeneration
+     * Both commits MUST include `Part-of: [GitHub issue URL]` trailer
+     * Only the **FIRST commit (add new version)** should include `Closes: [GitHub issue URL]`
 
-11. **Regenerate Manifest (Post-Removal):** After removing the old ebuild, run `ebuild <new-package-version>.ebuild manifest --force` to clean the `Manifest` file
+11. **Remove Old Ebuild (if approved):** Use `git rm` for the old ebuild file
 
-12. **Branch Deletion (MANDATORY):** If a new branch was created, ALWAYS prompt the user to delete it after a successful upgrade and commit. Ask: "Would you like to delete the [branch-name] branch and return to master? (y/n)"
+12. **Regenerate Manifest (Post-Removal):** After removing the old ebuild, run `ebuild <new-package-version>.ebuild manifest --force` to clean the `Manifest` file
 
-13. **Multiple Upgrades:** If upgrading another package, ensure the user switches back to the `master` branch first
+13. **Branch Deletion (MANDATORY):** If a new branch was created, ALWAYS prompt the user to delete it after a successful upgrade and commit. Ask: "Would you like to delete the [branch-name] branch and return to master? (y/n)"
+
+14. **Multiple Upgrades:** If upgrading another package, ensure the user switches back to the `master` branch first
 
 ---
 
