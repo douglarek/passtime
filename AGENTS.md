@@ -42,6 +42,11 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
 * **Restrictions:** Configure `RESTRICT` (e.g., `bindist`)
 * **Pre-compiled Files:** Use `QA_PREBUILT`
 
+#### Dependency Management Rules
+1. **Package Search:** When adding dependencies, use `emerge --search [package]` to fuzzy search for relevant packages. If multiple results exist and it's unclear which package to use, MUST ask the user to specify which package they need.
+
+2. **Dependency Ordering:** All dependencies in `DEPEND`, `RDEPEND`, and `BDEPEND` should be sorted in alphabetical order by package atom (string sort order).
+
 ---
 
 ### Bumping Package Versions
