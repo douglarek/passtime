@@ -109,7 +109,12 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
 
 ### Cleaning Obsolete Packages (treeclean)
 * Remove the entire package directory: `[category]/[package]`
-* Search and remove any lingering references (respect `.gitignore`)
+* Search for all references to the package name globally
+* Remove references from:
+  - README.md (package table entries)
+  - AGENTS.md (Special Cases section)
+  - .github/workflows/overlay.toml (package configuration)
+  - Any other files found by search
 
 ---
 
