@@ -104,11 +104,6 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
 ---
 
 ### Special Cases
-* **app-editors/cursor**: To get the latest version, execute EXACTLY:
-  ```
-  curl -sL "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
-  ```
-  Parse its JSON output for version and download URL. Do NOT modify this command.
 
 ---
 

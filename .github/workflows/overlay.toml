@@ -2,10 +2,6 @@
 oldver = "old_ver.json"
 newver = "new_ver.json"
 
-["app-editors/cursor"]
-source = "regex"
-url = "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest"
-regex = '"version":"([\d.]+)"'
 
 ["net-analyzer/pwru-bin"]
 source = "github"

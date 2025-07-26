@@ -12,7 +12,6 @@ Write some ebuilds to pass the time with Gentoo Linux.
 
 | Package                      | Description                                                               | URL                                                                                                                           |
 | :--------------------------- | :-------------------------------------------------------------------------| :-----------------------------------------------------------------------------------------------------------------------------|
-| app-editors/cursor           | Cursor App - AI-first coding environment                                  | [https://www.cursor.com](https://www.cursor.com)                                                                              |
 | net-analyzer/pwru-bin        | eBPF-based Linux kernel networking debugger                               | [https://github.com/cilium/pwru](https://github.com/cilium/pwru)                                                              |
 | net-misc/onedrive[^1]        | Free Client for OneDrive on Linux[^2]                                     | [https://github.com/abraunegg/onedrive](https://github.com/abraunegg/onedrive)                                                |
 | net-proxy/dae[^3]            | eBPF-based Linux high-performance transparent proxy solution              | [https://github.com/daeuniverse/dae](https://github.com/daeuniverse/dae)                                                      |
