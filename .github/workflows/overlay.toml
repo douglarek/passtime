@@ -61,6 +61,12 @@ github = "cweill/gotests"
 use_latest_tag = true
 prefix = "v"
 
+["app-misc/crush"]
+source = "github"
+github = "charmbracelet/crush"
+use_latest_tag = true
+prefix = "v"
+
 ["app-misc/opencode-bin"]
 source = "github"
 github = "sst/opencode"

@@ -22,6 +22,7 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | dev-util/android-tools-bin   | Android platform tools (adb, fastboot)                                    | [https://developer.android.com/tools/releases/platform-tools](https://developer.android.com/tools/releases/platform-tools)    |
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more     | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code          | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
+| app-misc/crush               | The glamourous AI coding agent for your favourite terminal                | [https://github.com/charmbracelet/crush](https://github.com/charmbracelet/crush)                                              |
 | app-misc/opencode-bin        | AI coding agent, built for the terminal                                   | [https://github.com/sst/opencode](https://github.com/sst/opencode)                                                            |
 | net-libs/bun-bin             | Incredibly fast JavaScript runtime, bundler, test runner, and package manager | [https://github.com/oven-sh/bun](https://github.com/oven-sh/bun)                                                              |
 
