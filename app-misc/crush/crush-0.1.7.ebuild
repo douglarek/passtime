@@ -36,8 +36,3 @@ src_install() {
 	newfishcomp completion.fish "${PN}".fish
 	newzshcomp completion.zsh _"${PN}"
 }
-
-pkg_postinst() {
-	elog "Note: This package has known rendering issues in Konsole."
-	elog "Recommended alternatives: gnome-console, ghostty, or other terminals."
-}
