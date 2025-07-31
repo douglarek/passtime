@@ -6,3 +6,6 @@ metadata/md5-cache/
 .env
 
 # End of https://www.toptal.com/developers/gitignore/api/dotenv
+
+### crush agent
+.crush
