@@ -6,6 +6,7 @@
    ```
    git commit --amend --no-edit --trailer="Co-authored-by: [AI_ASSISTANT_NAME] <noreply@[AI_PLATFORM]>"
    ```
+   * For crush: `Co-authored-by: crush <noreply@charm.land>`
    * For opencode: `Co-authored-by: opencode <noreply@opencode.ai>`
    * For Gemini CLI: `Co-authored-by: gemini <noreply@google.ai>`
    * For Claude Code: `Co-authored-by: claude <noreply@anthropic.com>`
@@ -87,7 +88,7 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
 
 10. **Commit Logic:**
    * **Single Commit Approach (Recommended):** Add new ebuild, remove old ebuild, and regenerate manifest in one commit
-   * **Two Commit Approach:** 
+   * **Two Commit Approach:**
      1. First commit: Add new ebuild + manifest regeneration
      2. Second commit: Remove old ebuild + manifest regeneration
      * Both commits MUST include `Part-of: [GitHub issue URL]` trailer
@@ -151,7 +152,7 @@ Follow this sequence strictly for every commit:
 
 8. **Branch Cleanup (MANDATORY):** After successful push, if working on a feature branch:
    * Ask: "Would you like to delete the [branch-name] branch and return to master? (y/n)"
-   * If yes: 
-     * Switch to master: `git checkout master` 
+   * If yes:
+     * Switch to master: `git checkout master`
      * Delete branch: `git branch -d [branch-name]`
    * Remind user that future package upgrades should start from master
