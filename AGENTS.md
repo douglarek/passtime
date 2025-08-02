@@ -56,15 +56,15 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
 
 2. **Identify Upgrade Needs:** If the user asks which packages need upgrading, or doesn't specify, check GitHub issues:
    * Run `git remote -v`
-   * For each GitHub remote (`github.com`), fetch open issues via `curl -sL https://api.github.com/repos/OWNER/REPO/issues`
+   * For each GitHub remote (`github.com`), fetch open issues via `https://api.github.com/repos/OWNER/REPO/issues`
    * Present potential matches (Title + URL) to the user
 
 3. **Branch Prompt (MANDATORY):** ALWAYS ask the user if they want to create a new branch for the commit, typically named after the package
 
 4. **Get `SRC_URI`:**
    * Refer to the previous ebuild
-   * For GitHub projects, use `curl -sL https://api.github.com/repos/[organization]/[project]/releases/latest`. This is authoritative
-   * If `.github/workflows/overlay.toml` exists and a package `source` is `regex`, use its `url` with `curl -sL [url]`
+   * For GitHub projects, request `https://api.github.com/repos/[organization]/[project]/releases/latest`. This is authoritative
+   * If `.github/workflows/overlay.toml` exists and a package `source` is `regex`, request its `url`
 
 5. **Create New Ebuild:** Copy the existing ebuild. Do NOT manually replace `${PV}`
 
@@ -135,7 +135,7 @@ Follow this sequence strictly for every commit:
    * **Identify Remotes:** Run `git remote -v`
    * **GitHub Remotes:** For each `github.com` remote:
      * Extract `OWNER/REPO`
-     * Fetch open issues: `curl -sL https://api.github.com/repos/OWNER/REPO/issues`
+     * Fetch open issues via `https://api.github.com/repos/OWNER/REPO/issues`
      * Present a numbered list of potential matches (Title + URL) to the user
      * Ask the user to select an issue to close. If selected, amend the commit with `Closes: [issue URL]`
    * **Non-GitHub Remotes:** Ask the user if they want to close a related issue. If they provide a URL, amend the commit
