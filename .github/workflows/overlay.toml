@@ -75,6 +75,11 @@ source = "regex"
 url = "https://registry.npmjs.org/@anthropic-ai/claude-code"
 regex = '"latest": "([\d.]+)"'
 
+["app-misc/gemini-cli"]
+source = "regex"
+url = "https://registry.npmjs.org/@google/gemini-cli"
+regex = '"latest": "([\d.]+)"'
+
 ["net-libs/bun-bin"]
 source = "github"
 github = "oven-sh/bun"
