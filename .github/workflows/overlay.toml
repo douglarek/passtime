@@ -48,8 +48,6 @@ source = "github"
 github = "nmeum/android-tools"
 use_latest_tag = true
 
-
-
 ["dev-go/staticcheck"]
 source = "github"
 github = "dominikh/go-tools"
@@ -67,6 +65,10 @@ github = "charmbracelet/crush"
 use_latest_tag = true
 prefix = "v"
 
+["app-misc/cursor-agent"]
+source = "regex"
+url = "https://cursor.com/install"
+regex = 'https:\/\/downloads\.cursor\.com\/lab\/(\d{4}\.\d{2}\.\d{2})-[^\/]+\/'
 
 ["net-libs/bun-bin"]
 source = "github"
