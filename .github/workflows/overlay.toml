@@ -73,12 +73,12 @@ regex = 'https:\/\/downloads\.cursor\.com\/lab\/(\d{4}\.\d{2}\.\d{2})-[^\/]+\/'
 ["app-misc/claude-code"]
 source = "regex"
 url = "https://registry.npmjs.org/@anthropic-ai/claude-code"
-regex = '"latest": "([\d.]+)"'
+regex = '"latest":"([\d.]+)"'
 
 ["app-misc/gemini-cli"]
 source = "regex"
 url = "https://registry.npmjs.org/@google/gemini-cli"
-regex = '"latest": "([\d.]+)"'
+regex = '"latest":"([\d.]+)"'
 
 ["net-libs/bun-bin"]
 source = "github"
