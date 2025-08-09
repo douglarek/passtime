@@ -80,6 +80,12 @@ source = "regex"
 url = "https://registry.npmjs.org/@google/gemini-cli"
 regex = '"latest":"([\d.]+)"'
 
+["app-misc/qwen-code"]
+source = "github"
+github = "QwenLM/qwen-code"
+use_latest_tag = true
+prefix = "v"
+
 ["net-libs/bun-bin"]
 source = "github"
 github = "oven-sh/bun"
