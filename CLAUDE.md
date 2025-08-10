@@ -54,10 +54,16 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
 
 1. **Check Special Cases FIRST:** Before determining a new version or `SRC_URI`, consult the `Special Cases` section below. If listed, follow its instructions ONLY.
 
-2. **Identify Upgrade Needs:** If the user asks which packages need upgrading, or doesn't specify, check GitHub issues:
-   * Run `git remote -v`
-   * For each GitHub remote (`github.com`), fetch open issues via `https://api.github.com/repos/OWNER/REPO/issues`
-   * Present potential matches (Title + URL) to the user
+2. **Identify Upgrade Needs:** If the user asks which packages need upgrading, or doesn't specify:
+   * **For GitHub packages:** Check GitHub issues:
+     - Run `git remote -v`
+     - For each GitHub remote (`github.com`), fetch open issues via `https://api.github.com/repos/OWNER/REPO/issues`
+     - Present potential matches (Title + URL) to the user
+     - **If no related issues found:** Check tags information through `.github/workflows/overlay.toml` configuration to determine if version upgrades are needed
+   * **For non-GitHub packages:** Check if upgrades are needed by examining `.github/workflows/overlay.toml`:
+     - Find the package configuration in the overlay.toml file
+     - Use the configured `url` and `regex` pattern to extract the latest version number
+     - Compare with the current ebuild version to determine if an upgrade is available
 
 3. **Branch Prompt (MANDATORY):** ALWAYS ask the user if they want to create a new branch for the commit, typically named after the package
 
