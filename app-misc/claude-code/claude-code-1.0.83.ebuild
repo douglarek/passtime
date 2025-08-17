@@ -23,10 +23,23 @@ RDEPEND="
 
 src_install() {
 	rm -r -f sdk* vendor package.json || die
-	dodir "/opt/${PN}"
-	cp -ar . "${D}/opt/${PN}/" || die
-	dosym "../${PN}/cli.js" "/opt/bin/claude"
-	# disable auto-updater
-	insinto /etc/claude-code
+
+	# nodejs defaults to disabling deprecation warnings when running code
+	# from any path containing a node_modules directory. Since we're installing
+	# outside of the realm of npm, explicitly pass an option to disable
+	# deprecation warnings so it behaves the same as it does if installed via
+	# npm. It's proprietary; not like Gentoo users can fix the warnings anyway.
+	sed -i 's/env node/env -S node --no-deprecation/' cli.js
+
+	dodoc README.md LICENSE.md
+
+	insinto /opt/${PN}
+	doins -r ./*
+	fperms a+x opt/claude-code/cli.js
+
+	dodir /opt/${PN}
+	dosym -r /opt/${PN}/cli.js /opt/bin/claude
+
+	insinto /etc/${PN}
 	doins "${FILESDIR}/managed-settings.json"
 }
