@@ -91,9 +91,3 @@ source = "github"
 github = "oven-sh/bun"
 use_latest_tag = true
 prefix = "bun-v"
-
-["app-editors/vim"]
-source = "github"
-github = "vim/vim"
-use_latest_tag = true
-prefix = "v"

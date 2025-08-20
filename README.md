@@ -28,7 +28,6 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | app-misc/gemini-cli          | Gemini CLI                                                                    | [https://github.com/google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli)                                    |
 | app-misc/qwen-code           | Qwen Code                                                                     | [https://github.com/QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)                                                    |
 | net-libs/bun-bin             | Incredibly fast JavaScript runtime, bundler, test runner, and package manager | [https://github.com/oven-sh/bun](https://github.com/oven-sh/bun)                                                              |
-| app-editors/vim              | Vim is a greatly improved version of the good old UNIX editor Vi              | [https://github.com/vim/vim](https://github.com/vim/vim)                                                                      |
 
 [^1]: forked from https://github.com/gentoo/dlang with regular updates.
 [^2]: you need to enable dlang overlay by running `eselect repository enable dlang`.
