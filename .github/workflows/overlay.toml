@@ -3,6 +3,12 @@ oldver = "old_ver.json"
 newver = "new_ver.json"
 
 
+["app-editors/neovim-bin"]
+source = "github"
+github = "neovim/neovim"
+use_latest_release = true
+prefix = "v"
+
 ["net-analyzer/pwru-bin"]
 source = "github"
 github = "cilium/pwru"
