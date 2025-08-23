@@ -3,8 +3,7 @@
 
 EAPI=8
 
-LUA_COMPAT=( lua5-{1..2} luajit )
-inherit desktop lua-single optfeature xdg
+inherit desktop optfeature xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility"
 HOMEPAGE="https://neovim.io"
@@ -13,13 +12,10 @@ S="${WORKDIR}"/nvim-linux-x86_64
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+nvimpager"
 KEYWORDS="-* ~amd64"
-
-REQUIRED_USE="${LUA_REQUIRED_USE}"
+IUSE="+nvimpager"
 
 RDEPEND="
-	${LUA_DEPS}
 	!app-editors/neovim
 	app-eselect/eselect-vi
 "
@@ -33,11 +29,14 @@ src_install() {
 	insinto /etc/vim
 	doins "${FILESDIR}"/sysinit.vim
 
+	insinto /usr/lib
+	doins -r lib/*
 	insinto /usr/share/nvim/runtime
-	doins -r lib/nvim/parser/* share/nvim/runtime/*
+	doins -r share/nvim/runtime/*
 
 	# conditionally install a symlink for nvimpager
 	if use nvimpager; then
+		fperms a+x usr/share/nvim/runtime/scripts/less.sh
 		dosym ../share/nvim/runtime/scripts/less.sh /usr/bin/nvimpager
 	fi
 
