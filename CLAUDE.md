@@ -18,6 +18,8 @@
 
 3. **Force Push Confirmation:** ALWAYS ask for user confirmation before `git push --force`
 
+4. **Package Upgrade Priority:** When checking for package upgrades, ALWAYS check GitHub issues first to identify upgrade requests. If no relevant issues exist, you MUST ask the user if they want to check for upgrades via the `overlay.toml` configuration file. Do not proceed with checking overlay.toml without explicit user consent.
+
 ---
 
 ## Gentoo Overlay Development Guide
@@ -59,8 +61,8 @@ This guide is for Gentoo overlay projects with a typical structure (e.g., `profi
      - Run `git remote -v`
      - For each GitHub remote (`github.com`), fetch open issues via `https://api.github.com/repos/OWNER/REPO/issues`
      - Present potential matches (Title + URL) to the user
-     - **If no related issues found:** Check tags information through `.github/workflows/overlay.toml` configuration to determine if version upgrades are needed
-   * **For non-GitHub packages:** Check if upgrades are needed by examining `.github/workflows/overlay.toml`:
+     - **If no related issues found:** ASK the user if they want to check tags information through `.github/workflows/overlay.toml` configuration to determine if version upgrades are needed
+   * **For non-GitHub packages:** ASK the user if they want to check if upgrades are needed by examining `.github/workflows/overlay.toml`:
      - Find the package configuration in the overlay.toml file
      - Use the configured `url` and `regex` pattern to extract the latest version number
      - Compare with the current ebuild version to determine if an upgrade is available
