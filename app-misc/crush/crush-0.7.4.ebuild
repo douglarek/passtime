@@ -21,6 +21,7 @@ KEYWORDS="-* ~amd64 ~arm64"
 BDEPEND=">=dev-lang/go-1.25"
 
 src_compile() {
+	local -x GOEXPERIMENT=greenteagc
 	local ldflags="\
 		-X github.com/charmbracelet/crush/internal/version.Version=${PV}"
 	ego build -o ${PN} -trimpath -ldflags "${ldflags}"
