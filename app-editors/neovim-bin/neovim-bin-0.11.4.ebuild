@@ -14,7 +14,7 @@ else
 		amd64? ( https://github.com/neovim/neovim/releases/download/v${PV}/nvim-linux-x86_64.tar.gz -> ${P}-amd64.tar.gz )
 		arm64? ( https://github.com/neovim/neovim/releases/download/v${PV}/nvim-linux-arm64.tar.gz -> ${P}-arm64.tar.gz )
 	"
-	KEYWORDS="-* ~amd64"
+	KEYWORDS="-* ~amd64 ~arm64"
 fi
 S="${WORKDIR}"
 
