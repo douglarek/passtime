@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,16 +8,18 @@ inherit unpacker desktop xdg
 DESCRIPTION="Weixin for Linux"
 HOMEPAGE="https://linux.weixin.qq.com"
 SRC_URI="
-	amd64? ( https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb -> wechat-${PV}_x86_64.deb )
+	amd64? ( https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb -> ${P}_amd64.deb )
+	arm64? ( https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb -> ${P}_arm64.deb )
+	loong? ( https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb -> ${P}_loongarch64.deb )
 "
 S=${WORKDIR}
 
 LICENSE="all-rights-reserved"
 
 SLOT="0"
-KEYWORDS="-* ~amd64"
-IUSE="+fcitx ibus"
-REQUIRED_USE="^^ ( fcitx ibus )"
+KEYWORDS="-* ~amd64 ~arm64 ~loong"
+IUSE="fcitx ibus"
+REQUIRED_USE="?? ( fcitx ibus )"
 
 RESTRICT="strip mirror bindist"
 BDEPEND="
@@ -25,9 +27,11 @@ BDEPEND="
 "
 RDEPEND="
 	app-accessibility/at-spi2-core
+	app-crypt/mit-krb5
 	dev-libs/nss
 	media-libs/libpulse
 	media-libs/mesa
+	net-print/cups
 	virtual/jack
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -38,6 +42,9 @@ RDEPEND="
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-renderutil
 	x11-libs/xcb-util-wm
+	fcitx? ( app-i18n/fcitx )
+	ibus? ( app-i18n/ibus )
+	loong? ( virtual/loong-ow-compat )
 "
 QA_PREBUILT="*"
 
@@ -84,3 +91,8 @@ src_install() {
 	insinto /usr/share
 	doins -r usr/share/icons
 }
+
+pkg_postinst() {
+	einfo "If you need to input Chinese in WeChat, please enable the corresponding USE flag (fcitx or ibus)."
+}
+
