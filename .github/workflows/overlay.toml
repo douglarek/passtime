@@ -37,12 +37,6 @@ source = "regex"
 url = "https://github.com/peeweep/wechat-linux-watcher/raw/refs/heads/master/wechat-linux-version.txt"
 regex = '(.*)'
 
-["app-text/goldendict-ng"]
-source = "github"
-github = "xiaoyifang/goldendict-ng"
-use_latest_release = true
-from_pattern = "v(.*)-.*"
-to_pattern = "\\1"
 
 ["dev-util/osc"]
 source = "github"

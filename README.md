@@ -18,7 +18,6 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | net-proxy/dae[^3]            | eBPF-based Linux high-performance transparent proxy solution                          | [https://github.com/daeuniverse/dae](https://github.com/daeuniverse/dae)                                                      |
 | net-vpn/cloudflared-bin      | Cloudflare Tunnel client (formerly Argo Tunnel)                                       | [https://github.com/cloudflare/cloudflared](https://github.com/cloudflare/cloudflared)                                        |
 | net-im/wechat[^5]            | Weixin for Linux                                                                      | [https://linux.weixin.qq.com](https://linux.weixin.qq.com)                                                                    |
-| app-text/goldendict-ng[^6]   | The Next Generation GoldenDict                                                        | [https://github.com/xiaoyifang/goldendict-ng](https://github.com/xiaoyifang/goldendict-ng)                                    |
 | dev-util/osc[^7]             | The Command Line Interface to work with an Open Build Service                         | [https://github.com/openSUSE/osc](https://github.com/openSUSE/osc)                                                            |
 | dev-util/android-tools-bin   | Android platform tools (adb, fastboot)                                                | [https://developer.android.com/tools/releases/platform-tools](https://developer.android.com/tools/releases/platform-tools)    |
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more                 | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
@@ -36,7 +35,6 @@ Write some ebuilds to pass the time with Gentoo Linux.
 [^3]: modified from https://github.com/microcai/gentoo-zh with minimal dependencies.
 [^4]: borrowed from https://github.com/gentoo/guru.
 [^5]: native qt non-bubblewrap.
-[^6]: borrowed from https://gitlab.com/Perfect_Gentleman/PG_Overlay.
 [^7]: borrowed from https://github.com/Gig-OS/gig.
 [^8]: borrowed from https://github.com/gentoo/guru. You need to enable guru overlay to use it.
 
