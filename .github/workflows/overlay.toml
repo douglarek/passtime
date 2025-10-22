@@ -86,9 +86,4 @@ github = "QwenLM/qwen-code"
 use_latest_tag = true
 prefix = "v"
 
-["net-libs/bun-bin"]
-source = "github"
-github = "oven-sh/bun"
-use_latest_tag = true
-prefix = "bun-v"
 
