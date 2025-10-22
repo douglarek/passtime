@@ -18,8 +18,6 @@ KEYWORDS="-* ~amd64 ~arm64"
 DEPEND="dev-lang/go"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-fix-go-mod.patch )
-
 src_compile() {
 	ego build -o "bin/${PN}" "./${PN}"
 }
