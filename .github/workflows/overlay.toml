@@ -92,7 +92,3 @@ github = "oven-sh/bun"
 use_latest_tag = true
 prefix = "bun-v"
 
-["app-misc/copilot"]
-source = "regex"
-url = "https://registry.npmjs.org/@github/copilot"
-regex = '"latest":"([\d.]+)"'
