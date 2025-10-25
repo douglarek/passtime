@@ -4,7 +4,7 @@
 
 EAPI=8
 
-inherit desktop wrapper
+inherit desktop
 
 DESCRIPTION="A cross-platform IDE for Enterprise, Web and Mobile development"
 HOMEPAGE="https://www.jetbrains.com/idea/"
@@ -57,8 +57,7 @@ src_prepare() {
 		elog "https://github.com/JetBrains/JetBrainsRuntime/releases"
 	fi
 
-	use lldb || ( rm -f plugins/Kotlin/bin/linux/LLDBFrontend || die )
-
+	use lldb || ( rm -f plugins/Kotlin/bin/linux/LLDBFrontend && rm -rf plugins/Kotlin/bin/lldb || die )
 
 	patchelf --set-rpath '$ORIGIN' jbr/lib/jcef_helper || die
 	patchelf --set-rpath '$ORIGIN' jbr/lib/libjcef.so || die
