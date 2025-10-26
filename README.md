@@ -24,10 +24,6 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more                 | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code                      | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
 | app-misc/crush               | The glamourous AI coding agent for your favourite terminal                            | [https://github.com/charmbracelet/crush](https://github.com/charmbracelet/crush)                                              |
-| app-misc/cursor-agent        | Cursor's code agent                                                                   | [https://docs.cursor.com/en/cli](https://docs.cursor.com/en/cli)                                                              |
-| app-misc/claude-code         | Claude Code - an agentic coding tool by Anthropic                                     | [https://docs.anthropic.com/s/claude-code](https://docs.anthropic.com/s/claude-code)                                          |
-| app-misc/gemini-cli          | Gemini CLI                                                                            | [https://github.com/google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli)                                    |
-| app-misc/qwen-code           | Qwen Code                                                                             | [https://github.com/QwenLM/qwen-code](https://github.com/QwenLM/qwen-code)                                                    |
 
 [^1]: forked from https://github.com/gentoo/dlang with regular updates.
 [^2]: you need to enable dlang overlay by running `eselect repository enable dlang`.
