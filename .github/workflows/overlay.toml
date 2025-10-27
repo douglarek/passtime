@@ -65,8 +65,3 @@ github = "charmbracelet/crush"
 use_latest_tag = true
 prefix = "v"
 
-
-["dev-util/idea-ultimate"]
-source = "regex"
-url = "https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release"
-regex = '"version":"([\d.]+)"'
