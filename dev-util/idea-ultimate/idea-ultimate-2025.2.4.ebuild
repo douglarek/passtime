@@ -4,7 +4,7 @@
 
 EAPI=8
 
-inherit desktop
+inherit desktop toolchain-funcs
 
 DESCRIPTION="A cross-platform IDE for Enterprise, Web and Mobile development"
 HOMEPAGE="https://www.jetbrains.com/idea/"
@@ -18,19 +18,23 @@ LICENSE+=" OFL-1.1 public-domain unicode Unlicense W3C ZLIB ZPL"
 
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="lldb wayland"
+IUSE="wayland"
 
 RESTRICT="strip mirror bindist"
 BDEPEND="
+	dev-util/debugedit
 	dev-util/patchelf
 "
 RDEPEND="
-	lldb? ( llvm-core/lldb )
+	dev-libs/libpcre2
+	sys-libs/pam
 	sys-process/audit
 "
-QA_PREBUILT="*"
+#	lldb? ( llvm-core/lldb )
+QA_PREBUILT="opt/${PN}/*"
 
 src_prepare() {
+	tc-export OBJCOPY
 	default
 	mv idea-IU-*/* . && rm -rf idea-IU-* || die
 
@@ -57,10 +61,32 @@ src_prepare() {
 		elog "https://github.com/JetBrains/JetBrainsRuntime/releases"
 	fi
 
-	use lldb || ( rm -f plugins/Kotlin/bin/linux/LLDBFrontend && rm -rf plugins/Kotlin/bin/lldb || die )
+	#use lldb || ( rm -f plugins/Kotlin/bin/linux/LLDBFrontend && rm -rf plugins/Kotlin/bin/lldb || die )
 
-	patchelf --set-rpath '$ORIGIN' jbr/lib/jcef_helper || die
-	patchelf --set-rpath '$ORIGIN' jbr/lib/libjcef.so || die
+	sed -i \
+		-e "\$a\\\\" \
+		-e "\$a#-----------------------------------------------------------------------" \
+		-e "\$a# Disable automatic updates as these are handled through Gentoo's" \
+		-e "\$a# package manager. See bug #704494" \
+		-e "\$a#-----------------------------------------------------------------------" \
+		-e "\$aide.no.platform.update=Gentoo" bin/idea.properties
+
+	# removing debug symbols and relocating debug files as per #876295
+	# we're escaping all the files that contain $() in their name
+	# as they should not be executed
+	find . -type f ! -name '*$(*)*' -print0 | while IFS= read -r -d '' file; do
+		for skip in "${skip_remote_files[@]}"; do
+			[[ ${file} == "./${skip}" ]] && continue 2
+		done
+		if file "${file}" | grep -qE "ELF (32|64)-bit"; then
+			${OBJCOPY} --remove-section .note.gnu.build-id "${file}" || die
+			debugedit -b "${EPREFIX}/opt/${PN}" -d "/usr/lib/debug" -i "${file}" || die
+		fi
+	done
+
+	patchelf --set-rpath '$ORIGIN/../lib' "jbr/bin/"* || die
+	patchelf --set-rpath '$ORIGIN' "jbr/lib/"{libjcef.so,jcef_helper} || die
+	patchelf --set-rpath '$ORIGIN:$ORIGIN/server' jbr/lib/lib*.so* || die
 }
 
 src_install() {
