@@ -18,17 +18,20 @@ LICENSE+=" OFL-1.1 public-domain unicode Unlicense W3C ZLIB ZPL"
 
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="lldb wayland"
+IUSE="bundled-jdk lldb wayland"
 
 RESTRICT="strip mirror bindist"
 BDEPEND="
 	dev-util/patchelf
 "
 RDEPEND="
+	!bundled-jdk? (
+		>=virtual/jre-17:*
+	)
 	lldb? ( llvm-core/lldb )
 	sys-process/audit
 "
-QA_PREBUILT="*"
+QA_PREBUILT="opt/${PN}/*"
 
 src_prepare() {
 	default
@@ -57,10 +60,23 @@ src_prepare() {
 		elog "https://github.com/JetBrains/JetBrainsRuntime/releases"
 	fi
 
+	sed -i \
+		-e "\$a\\\\" \
+		-e "\$a#-----------------------------------------------------------------------" \
+		-e "\$a# Disable automatic updates as these are handled through Gentoo's" \
+		-e "\$a# package manager. See bug #704494" \
+		-e "\$a#-----------------------------------------------------------------------" \
+		-e "\$aide.no.platform.update=Gentoo" bin/idea.properties
+
 	use lldb || ( rm -f plugins/Kotlin/bin/linux/LLDBFrontend && rm -rf plugins/Kotlin/bin/lldb || die )
 
-	patchelf --set-rpath '$ORIGIN' jbr/lib/jcef_helper || die
-	patchelf --set-rpath '$ORIGIN' jbr/lib/libjcef.so || die
+	if use bundled-jdk; then
+		patchelf --set-rpath '$ORIGIN/../lib' "jbr/bin/"* || die
+		patchelf --set-rpath '$ORIGIN' "jbr/lib/"{libjcef.so,jcef_helper} || die
+		patchelf --set-rpath '$ORIGIN:$ORIGIN/server' jbr/lib/lib*.so* || die
+	else
+		rm -r "jbr" || die
+	fi
 }
 
 src_install() {
