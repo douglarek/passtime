@@ -95,4 +95,3 @@ src_install() {
 pkg_postinst() {
 	einfo "If you need to input Chinese in WeChat, please enable the corresponding USE flag (fcitx or ibus)."
 }
-
