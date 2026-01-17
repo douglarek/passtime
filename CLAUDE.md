@@ -6,7 +6,7 @@
    ```
    git commit --amend --no-edit --trailer="Co-authored-by: [AI_ASSISTANT_NAME] <noreply@[AI_PLATFORM]>"
    ```
-   * For crush: `Co-authored-by: crush <crush@charm.land>`
+
    * For Qwen Coder: `Co-authored-by: qwen <noreply@qwen.ai>`
    * For Gemini CLI: `Co-authored-by: gemini <noreply@google.ai>`
    * For Claude Code: `Co-authored-by: claude <noreply@anthropic.com>`
