@@ -59,5 +59,11 @@ github = "cweill/gotests"
 use_latest_tag = true
 prefix = "v"
 
+["dev-util/pi-coding-agent-bin"]
+source = "github"
+github = "badlogic/pi-mono"
+use_latest_release = true
+prefix = "v"
+
 
 
