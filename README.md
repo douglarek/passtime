@@ -20,6 +20,7 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | net-im/wechat[^5]            | Weixin for Linux                                                                      | [https://linux.weixin.qq.com](https://linux.weixin.qq.com)                                                                    |
 | dev-util/osc[^7]             | The Command Line Interface to work with an Open Build Service                         | [https://github.com/openSUSE/osc](https://github.com/openSUSE/osc)                                                            |
 | dev-util/android-tools-bin   | Android platform tools (adb, fastboot)                                                | [https://developer.android.com/tools/releases/platform-tools](https://developer.android.com/tools/releases/platform-tools)    |
+| dev-util/pi-coding-agent-bin | A terminal-based coding agent with multi-model support                                | [https://github.com/badlogic/pi-mono](https://github.com/badlogic/pi-mono)                                                    |
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more                 | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code                      | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
 
