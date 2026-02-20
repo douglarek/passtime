@@ -65,5 +65,11 @@ github = "badlogic/pi-mono"
 use_latest_release = true
 prefix = "v"
 
+["app-text/lektra"]
+source = "github"
+github = "dheerajshenoy/lektra"
+use_latest_release = true
+prefix = "v"
+
 
 

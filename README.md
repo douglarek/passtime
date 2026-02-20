@@ -21,6 +21,7 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | dev-util/osc[^7]             | The Command Line Interface to work with an Open Build Service                         | [https://github.com/openSUSE/osc](https://github.com/openSUSE/osc)                                                            |
 | dev-util/android-tools-bin   | Android platform tools (adb, fastboot)                                                | [https://developer.android.com/tools/releases/platform-tools](https://developer.android.com/tools/releases/platform-tools)    |
 | dev-util/pi-coding-agent-bin | A terminal-based coding agent with multi-model support                                | [https://github.com/badlogic/pi-mono](https://github.com/badlogic/pi-mono)                                                    |
+| app-text/lektra              | High-performance PDF reader that prioritizes screen space and control                 | [https://github.com/dheerajshenoy/lektra](https://github.com/dheerajshenoy/lektra)                                            |
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more                 | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code                      | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
 
