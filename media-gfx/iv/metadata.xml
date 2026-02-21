@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>douglarek@gmail.com</email>
+		<name>Leo Douglas</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">dheerajshenoy/iv</remote-id>
+		<bugs-to>https://github.com/dheerajshenoy/iv/issues</bugs-to>
+	</upstream>
+	<use>
+		<flag name="avif">Enable AVIF image format support via <pkg>media-libs/libavif</pkg></flag>
+		<flag name="exif">Enable EXIF metadata viewing support via <pkg>media-gfx/exiv2</pkg></flag>
+	</use>
+</pkgmetadata>

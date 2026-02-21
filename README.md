@@ -24,6 +24,7 @@ Write some ebuilds to pass the time with Gentoo Linux.
 | app-text/lektra              | High-performance PDF reader that prioritizes screen space and control                 | [https://github.com/dheerajshenoy/lektra](https://github.com/dheerajshenoy/lektra)                                            |
 | dev-go/staticcheck           | Go static analysis, detecting bugs, performance issues, and much more                 | [https://github.com/dominikh/go-tools](https://github.com/dominikh/go-tools)                                                  |
 | dev-go/gotests               | Automatically generate Go test boilerplate from your source code                      | [https://github.com/cweill/gotests](https://github.com/cweill/gotests)                                                        |
+| media-gfx/iv                 | An unintrusive minimal image viewer                                                   | [https://github.com/dheerajshenoy/iv](https://github.com/dheerajshenoy/iv)                                                    |
 
 
 [^1]: forked from https://github.com/gentoo/dlang with regular updates.

@@ -71,5 +71,10 @@ github = "dheerajshenoy/lektra"
 use_latest_release = true
 prefix = "v"
 
+["media-gfx/iv"]
+source = "github"
+github = "dheerajshenoy/iv"
+use_latest_tag = true
+
 
 
