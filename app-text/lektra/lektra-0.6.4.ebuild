@@ -23,7 +23,7 @@ DEPEND="
 	dev-qt/qtbase:6[concurrent,gui,widgets]
 	curl? ( net-misc/curl )
 	synctex? ( app-text/texlive-core )
-	system-mupdf? ( >=app-text/mupdf-1.26.3 )
+	system-mupdf? ( >=app-text/mupdf-1.27.2 )
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
@@ -33,7 +33,7 @@ BDEPEND="
 
 src_prepare() {
 	if use system-mupdf; then
-		PATCHES+=( "${FILESDIR}/${PN}-0.6.2-system-mupdf.patch" )
+		PATCHES+=( "${FILESDIR}/${PN}-0.6.4-system-mupdf.patch" )
 	else
 		# Setup bundled mupdf
 		mkdir -p "${S}/external" || die
