@@ -2,23 +2,13 @@
 
 ## Global Rules
 
-1. **Commit Co-authorship:** After every successful `git commit`, automatically run:
-   ```
-   git commit --amend --no-edit --trailer="Co-authored-by: [AI_ASSISTANT_NAME] <noreply@[AI_PLATFORM]>"
-   ```
-
-   * For Qwen Coder: `Co-authored-by: qwen <noreply@qwen.ai>`
-   * For Gemini CLI: `Co-authored-by: gemini <noreply@google.ai>`
-   * For Claude Code: `Co-authored-by: claude <noreply@anthropic.com>`
-   * For GitHub Copilot: `Co-authored-by: copilot <noreply@github.com>`
-
-2. **Semantic Commit Messages:** Use the Conventional Commits format: `<type>(<scope>): <subject>`
+1. **Semantic Commit Messages:** Use the Conventional Commits format: `<type>(<scope>): <subject>`
    * **Example:** `feat: add hat wobble`
    * **Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
-3. **Force Push Confirmation:** ALWAYS ask for user confirmation before `git push --force`
+2. **Force Push Confirmation:** ALWAYS ask for user confirmation before `git push --force`
 
-4. **Package Upgrade Priority:** When checking for package upgrades, ALWAYS check GitHub issues first to identify upgrade requests. If no relevant issues exist, you MUST ask the user if they want to check for upgrades via the `overlay.toml` configuration file. Do not proceed with checking overlay.toml without explicit user consent.
+3. **Package Upgrade Priority:** When checking for package upgrades, ALWAYS check GitHub issues first to identify upgrade requests. If no relevant issues exist, you MUST ask the user if they want to check for upgrades via the `overlay.toml` configuration file. Do not proceed with checking overlay.toml without explicit user consent.
 
 ---
 
