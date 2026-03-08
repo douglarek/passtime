@@ -32,12 +32,6 @@ source = "github"
 github = "cloudflare/cloudflared"
 use_latest_release = true
 
-["net-im/wechat"]
-source = "regex"
-url = "https://github.com/peeweep/wechat-linux-watcher/raw/refs/heads/master/wechat-linux-version.txt"
-regex = '(.*)'
-
-
 ["dev-util/osc"]
 source = "github"
 github = "openSUSE/osc"
