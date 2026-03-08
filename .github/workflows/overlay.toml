@@ -21,12 +21,6 @@ github = "abraunegg/onedrive"
 use_latest_release = true
 prefix = "v"
 
-["net-proxy/dae"]
-source = "github"
-github = "daeuniverse/dae"
-use_latest_release = true
-prefix = "v"
-
 ["net-vpn/cloudflared-bin"]
 source = "github"
 github = "cloudflare/cloudflared"
