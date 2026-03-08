@@ -9,12 +9,6 @@ github = "neovim/neovim"
 use_latest_release = true
 prefix = "v"
 
-["net-analyzer/pwru-bin"]
-source = "github"
-github = "cilium/pwru"
-use_latest_release = true
-prefix = "v"
-
 ["net-misc/onedrive"]
 source = "github"
 github = "abraunegg/onedrive"
