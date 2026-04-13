@@ -76,7 +76,7 @@ jobs:
         npm install toml
 
     - name: update issues
-      uses: actions/github-script@v8
+      uses: actions/github-script@v9
       timeout-minutes: 1
       env:
         pkgs: ${{steps.nvchecker.outputs.nvcmp}}
