@@ -7,6 +7,8 @@ DESCRIPTION="Coding agent for DeepSeek models with terminal TUI"
 HOMEPAGE="https://github.com/douglarek/deepseek-tui-nightly"
 S="${WORKDIR}"
 
+inherit shell-completion
+
 if [[ ${PV} == 9999 ]]; then
 	PROPERTIES+=" live"
 	BDEPEND+=" net-misc/curl"
@@ -46,4 +48,14 @@ src_unpack() {
 src_install() {
 	exeinto /usr/bin
 	doexe deepseek deepseek-tui
+
+	# shell completions
+	./deepseek completions bash > deepseek.bash || die
+	dobashcomp deepseek.bash
+
+	./deepseek completions zsh > _deepseek || die
+	dozshcomp _deepseek
+
+	./deepseek completions fish > deepseek.fish || die
+	dofishcomp deepseek.fish
 }
