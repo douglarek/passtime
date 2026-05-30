@@ -41,5 +41,12 @@ github = "cweill/gotests"
 use_latest_tag = true
 prefix = "v"
 
+["dev-util/gitea-cli"]
+source = "gitea"
+gitea = "gitea/tea"
+base_url = "https://gitea.com"
+use_latest_release = true
+prefix = "v"
+
 
 
