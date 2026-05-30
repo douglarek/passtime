@@ -6,6 +6,6 @@
 		<name>Leo Douglas</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="gitea">gitea/tea</remote-id>
+		<remote-id type="github">douglarek/gentoo-deps</remote-id>
 	</upstream>
 </pkgmetadata>
